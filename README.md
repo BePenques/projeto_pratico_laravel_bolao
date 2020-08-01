@@ -45,9 +45,9 @@ Crie o banco de dados definido no endereço acima.
 
 Com o SGBD no ar, pelo terminal, na pasta do projeto:
 
-    - Execute: php artisan key:generate para dicionar uma hash de segurança no arquivo .env
+    - Execute php artisan key:generate  - para dicionar uma hash de segurança no arquivo .env
 
-    - Execute: php artisan migrate para efetivar as migrações (cria as tabelas no banco)
+    - Execute php artisan migrate - para efetivar as migrações (cria as tabelas no banco)
     
 ## Iniciar a aplicação
 
@@ -57,4 +57,4 @@ A aplicação estará disponível no endereço indicado (por padrão, o endereç
 
 ## Notas
 
-Projeto(em desenvolvimento) como forma de estudo e utilização do framework PHP Laravel, em Aplicações Web.
+Projeto(em desenvolvimento) para fins de estudo e utilização do framework PHP Laravel, em Aplicações Web.
