@@ -12,6 +12,7 @@
 
 
                   <x-paginate_component :search="$search" :list="$list"/>
-            </x-page>
+                  
+            </x-page_component>
 
 @endsection

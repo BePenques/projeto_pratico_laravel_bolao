@@ -80,8 +80,9 @@ class UserController extends Controller
       ];
 
       $titleAdd = trans('bolao.addUser');
+      $action = route('users.store');
 
-        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName', 'breadcrumb','titleAdd'));
+        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName','action', 'breadcrumb','titleAdd'));
     }
 
     /**
@@ -92,7 +93,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

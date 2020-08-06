@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class alert extends Component
 {
     public $msg;
-    public $status;
+    public $status; 
     /**
      * Create a new component instance.
      *
