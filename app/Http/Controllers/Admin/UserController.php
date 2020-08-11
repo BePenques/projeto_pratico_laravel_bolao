@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
-
+use Validator;
 
 
 class UserController extends Controller
@@ -93,7 +93,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        $messages = [
+          'name.required' =>__('bolao.Required',['atributo'=>trans('bolao.name')]),
+          'password.required' =>__('bolao.Required',['atributo'=>trans('bolao.password')]),
+          'email.required' =>__('bolao.Required',['atributo'=>trans('bolao.email')]),
+          'min' =>__('bolao.min8'),
+          'confirmed'=>__('bolao.confirm')
+        ];  
+
+        Validator::make($data, [
+          'name' => ['required', 'string', 'max:255'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],$messages)->validate();
+
     }
 
     /**

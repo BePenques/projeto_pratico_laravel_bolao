@@ -8,7 +8,7 @@
 
         <x-form_component :action="$action" method="POST">
           @include('admin.users.form')
-          <button type="submit" class="btn btn-primary btn-lg float-right">Cadastrar</button>
+          <button type="submit" class="btn btn-primary btn-lg float-right">{{ __('bolao.register-verb') }}</button>
         </x-form_component>
 
       </x-page_component>

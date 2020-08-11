@@ -4,6 +4,7 @@ return [
 
     'login' => 'Login',
     'register' => 'Register',
+    'register-verb' => 'Register',
     'name' => 'Name',
     'email' => 'E-mail',
     'password' => 'Password',
@@ -21,7 +22,10 @@ return [
     'user' => 'User',
     'list' => ':page List',
     'create_crud' => 'Add :page',
-    'home' => 'Home'
-
+    'home' => 'Home',
+    'Required' => 'The :atributo field is required.',
+    'min8' => 'The password field must be at least 8 characters.',
+    'confirm' => 'The password confirmation does not match.'
+    
 
 ];

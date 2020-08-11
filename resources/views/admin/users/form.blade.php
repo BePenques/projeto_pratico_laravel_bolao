@@ -1,19 +1,34 @@
 <div class="row">
     <div class="form-group col-6">
-        <label for="name">Nome</label>
-        <input type="text" class="form-control" name="name" value="">
+        <label for="name">{{ __('bolao.name') }}</label>
+        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+        @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
     <div class="form-group col-6">
-        <label for="name">E-mail</label>
-        <input type="mail" class="form-control" name="email" value="">
+        <label for="name">{{ __('bolao.email') }}</label>
+        <input type="mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
     <div class="form-group col-6">
-        <label for="password">Senha</label>
-        <input type="password" class="form-control" name="password" value="">
+        <label for="password">{{ __('bolao.password') }}</label>
+        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="">
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
     <div class="form-group col-6">
-        <label for="password">Confirmar senha</label>
-        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+        <label for="password">{{ __('bolao.confirmPassword') }}</label>
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="">
     </div>
 </div>
           
