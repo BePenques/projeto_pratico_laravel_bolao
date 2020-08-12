@@ -44,8 +44,6 @@ class UserController extends Controller
         $list = $this->model->paginate($this->paginate,'id', 'DESC');
       }
 
-    //  dd($list);
-
       $page = trans('bolao.user_list');
 
       $routeName = $this->route;
@@ -108,6 +106,23 @@ class UserController extends Controller
           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
           'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],$messages)->validate();
+
+        $routeName = $this->route;
+
+        if($this->model->create($data)){
+
+          session()->flash('msg',trans('bolao.record_successfully_added'));
+          session()->flash('status', 'success');
+
+          return redirect(route('users.index')); 
+         
+
+        }else{
+          session()->flash('msg', trans('bolao.record_successfully_added'));
+          session()->flash('status', 'bolao.error_adding_record');
+  
+          return redirect()->back();
+        }
 
     }
 

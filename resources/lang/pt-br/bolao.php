@@ -25,7 +25,11 @@ return [
     'home' => 'Início',
     'Required' => 'O campo :atributo é obrigatório.',
     'min8' => 'O campo senha deve ter pelo menos 8 caracteres.',
-    'confirm' => 'O campo senha de confirmação não confere.'
+    'confirm' => 'O campo senha de confirmação não confere.',
+    'record-successfully-added' => 'Registro adicionado com sucesso!',
+    'error-adding-record' => 'Erro ado adicionar regitro.'
+    
+
     
     
    
