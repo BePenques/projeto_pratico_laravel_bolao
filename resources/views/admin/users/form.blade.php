@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-6">
         <label for="name">{{ __('bolao.name') }}</label>
-        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? ($register->name ?? '') }}">
         @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -10,7 +10,7 @@
     </div>
     <div class="form-group col-6">
         <label for="name">{{ __('bolao.email') }}</label>
-        <input type="mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+        <input type="mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? ($register->email ?? '') }}">
         @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

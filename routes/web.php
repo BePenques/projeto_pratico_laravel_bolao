@@ -42,5 +42,6 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
 
   Route::resource('/users', 'UserController');
   Route::resource('/create', 'UserController');
+  
 
 });

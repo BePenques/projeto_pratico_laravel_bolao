@@ -22,12 +22,15 @@ return [
     'user' => 'Usuário',
     'list' => 'Lista de :page',
     'create_crud' => 'Adicionar :page',
+    'edit_crud' => 'Editar :page',
     'home' => 'Início',
     'Required' => 'O campo :atributo é obrigatório.',
     'min8' => 'O campo senha deve ter pelo menos 8 caracteres.',
     'confirm' => 'O campo senha de confirmação não confere.',
     'record-successfully-added' => 'Registro adicionado com sucesso!',
-    'error-adding-record' => 'Erro ado adicionar regitro.'
+    'error-adding-record' => 'Erro ado adicionar regitro.',
+    'edit' => 'Editar',
+    'delete' => 'Excluir'
     
 
     
