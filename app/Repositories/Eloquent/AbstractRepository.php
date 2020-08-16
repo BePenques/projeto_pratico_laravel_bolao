@@ -71,6 +71,19 @@ abstract class AbstractRepository
     
     }
 
+    public function delete( int $id):Bool
+    {
+      $register = $this->findById($id);
+
+      if($register){
+        return (bool) $register->delete();
+      }else{
+        return false;
+      }
+
+    
+    }
+
 
 }
 
