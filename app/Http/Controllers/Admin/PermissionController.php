@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\PermissionRepositoryInterface;
 use Validator;
-use Illuminate\Validation\Rule;
+
 
 
 class PermissionController extends Controller

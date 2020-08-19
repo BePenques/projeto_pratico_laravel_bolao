@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
       $this->app->bind('App\Repositories\Contracts\UserRepositoryInterface','App\Repositories\Eloquent\UserRepository');//1º qual interface vai definir
+      $this->app->bind('App\Repositories\Contracts\PermissionRepositoryInterface','App\Repositories\Eloquent\PermissionRepository');//1º qual interface vai definir
       //2º qual a classe que essa interface vai receber uma instancia
 
     }
