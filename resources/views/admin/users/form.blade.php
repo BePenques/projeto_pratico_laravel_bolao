@@ -9,7 +9,7 @@
         @enderror
     </div>
     <div class="form-group col-6">
-        <label for="name">{{ __('bolao.email') }}</label>
+        <label for="name">E-mail</label>
         <input type="mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? ($register->email ?? '') }}">
         @error('email')
             <span class="invalid-feedback" role="alert">

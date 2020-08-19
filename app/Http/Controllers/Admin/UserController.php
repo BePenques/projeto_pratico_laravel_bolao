@@ -33,7 +33,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'email'=>trans('bolao.email'), 'acao'=>'Ação'];
+      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'email'=>'E-mail', 'acao'=>'Ação'];
 
       $search = "";
 
@@ -87,27 +87,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+      $data = $request->all();
 
-        $messages =  $this->validateMsg();
+      $messages =  $this->validateMsg();
 
-        Validator::make($data, [
-          'name' => ['required', 'string', 'max:255'],
-          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-          'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ],$messages)->validate();
+      $this->validator('unique:users','',$data,$messages);
 
-        $routeName = $this->route;
 
-        if($this->model->create($data)){
-         
-          return $this->sessionMsg(trans('bolao.record_successfully_added'),'success', $routeName.".index");
-    
-        }else{
+      $routeName = $this->route;
 
-          return $this->sessionMsg(trans('bolao.error_adding_record'),'error', 'back');
+      if($this->model->create($data)){
       
-        }
+        return $this->sessionMsg(trans('bolao.record_successfully_added'),'success', $routeName.".index");
+  
+      }else{
+
+        return $this->sessionMsg(trans('bolao.error_adding_record'),'error', 'back');
+    
+      }
 
     }
 
@@ -200,11 +197,7 @@ class UserController extends Controller
 
        $messages =  $this->validateMsg();
 
-      Validator::make($data, [
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],//vai ignorar  a validação "email já existente"
-        'password' => ['sometimes','required', 'string', 'min:8', 'confirmed'],//sometimes - ignora as outras regras se não existir o password
-      ],$messages)->validate();
+       $this->validator(Rule::unique('users')->ignore($id),'sometimes',$data,$messages);
 
       $routeName = $this->route;
 
@@ -219,6 +212,22 @@ class UserController extends Controller
         return $this->sessionMsg(trans('bolao.error_adding_record'),'error','back');
        
     
+      }
+  }
+
+  public function destroy($id)
+  {
+    $routeName = $this->route;
+
+    if($this->model->delete($id)){
+
+      return $this->sessionMsg('Registro deletado com sucesso!','success', $routeName.".index");
+    
+
+    }else{
+
+      return $this->sessionMsg('Erro ao deletar registro','error','back');
+      
     }
   }
 
@@ -238,64 +247,52 @@ class UserController extends Controller
      
   }
 
-    public function validateMsg(){
+  public function validateMsg()
+  {
 
-      return $messages = [
-        'name.required' =>__('bolao.Required',['atributo'=>trans('bolao.name')]),
-        'password.required' =>__('bolao.Required',['atributo'=>trans('bolao.password')]),
-        'email.required' =>__('bolao.Required',['atributo'=>trans('bolao.email')]),
-        'min' =>__('bolao.min8'),
-        'confirmed'=>__('bolao.confirm')
+    return $messages = [
+      'name.required' =>__('bolao.Required',['atributo'=>trans('bolao.name')]),
+      'password.required' =>__('bolao.Required',['atributo'=>trans('bolao.password')]),
+      'email.required' =>__('bolao.Required',['atributo'=>'E-mail']),
+      'min' =>__('bolao.min8'),
+      'confirmed'=>__('bolao.confirm')
+    ];
+
+  }
+
+  public function breadcrumb($url1, $title1, $url2, $title2)
+  {
+
+    if($url2 != '' || $title2 != ''){
+
+      return [
+        (object)['url'=>route('home'), 'title'=>trans('bolao.home')],
+        (object)['url'=>$url1, 'title'=>$title1],
+        (object)['url'=>$url2, 'title'=>$title2]
+      ];
+
+    }else{
+    
+      return [
+        (object)['url'=>route('home'), 'title'=>trans('bolao.home')],
+        (object)['url'=>$url1, 'title'=>$title1]
       ];
 
     }
 
-    public function breadcrumb($url1, $title1, $url2, $title2)
-    {
+  }
 
-     if($url2 != '' || $title2 != ''){
+  public function validator($unique,$sometimes,$data,$messages)
+  {
+    
+    return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', $unique],
+        'password' => [$sometimes,'required', 'string', 'min:8', 'confirmed'],
+      ],$messages)->validate();
 
-        return [
-          (object)['url'=>route('home'), 'title'=>trans('bolao.home')],
-          (object)['url'=>$url1, 'title'=>$title1],
-          (object)['url'=>$url2, 'title'=>$title2]
-        ];
-
-     }else{
-       
-        return [
-          (object)['url'=>route('home'), 'title'=>trans('bolao.home')],
-          (object)['url'=>$url1, 'title'=>$title1]
-        ];
-
-     }
 
     
-  
-
-    }
-
-       /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-      $routeName = $this->route;
-
-        if($this->model->delete($id)){
-
-          return $this->sessionMsg('Registro deletado com sucesso!','success', $routeName.".index");
-        
-
-        }else{
-
-          return $this->sessionMsg('Erro ao deletar registro','error','back');
-          
-        }
-    }
-
+  }
   
 }
