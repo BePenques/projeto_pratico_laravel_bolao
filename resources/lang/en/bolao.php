@@ -34,7 +34,9 @@ return [
     'record_successfully_added' => 'Record successfully added!',
     'error_adding_record' => 'Error adding record.',
     'edit' => 'Edit',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'action' => 'Action',
+    'confirmDelete'=> 'Do you want to delete this record?'
     
 
 ];

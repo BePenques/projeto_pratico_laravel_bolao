@@ -31,10 +31,12 @@ return [
     'Required' => 'O campo :atributo é obrigatório.',
     'min8' => 'O campo senha deve ter pelo menos 8 caracteres.',
     'confirm' => 'O campo senha de confirmação não confere.',
-    'record-successfully-added' => 'Registro adicionado com sucesso!',
-    'error-adding-record' => 'Erro ado adicionar regitro.',
+    'record_successfully_added' => 'Registro adicionado com sucesso!',
+    'error_adding_record' => 'Erro ado adicionar regitro.',
     'edit' => 'Editar',
-    'delete' => 'Excluir'
+    'delete' => 'Excluir',
+    'action' => 'Ação',
+    'confirmDelete'=> 'Deseja deletar esse registro?'
     
 
     

@@ -7,13 +7,13 @@
         <x-alert :msg="session('msg'??'')" :status="session('status'??'')" />  
 
         <p>{{__('bolao.name')}}: {{$register->name}}</p>
-        <p>E-mail: {{$register->email}}</p>
+        <p>{{__('bolao.description')}}: {{$register->description}}</p>
 
         @if($delete)
           <x-form_component :action="$action" method="DELETE">
             <br>
             <p>{{__('bolao.confirmDelete')}}</p>
-            <button class="btn btn-danger btn-lg "><p>{{__('bolao.delete')}}</p></button>
+            <button class="btn btn-danger btn-lg ">{{__('bolao.delete')}}</button>
           </x-form_component>
         @endif
 

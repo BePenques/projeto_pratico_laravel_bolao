@@ -33,7 +33,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'email'=>'E-mail', 'acao'=>'Ação'];
+      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'email'=>'E-mail', 'acao'=>trans('bolao.action')];
 
       $search = "";
 

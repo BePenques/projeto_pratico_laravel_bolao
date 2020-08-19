@@ -33,7 +33,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
 
-      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'description'=>trans('bolao.description'), 'acao'=>'Ação'];
+      $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'description'=>trans('bolao.description'), 'acao'=>trans('bolao.action')];
 
       $search = "";
 
@@ -189,11 +189,6 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
-        if(!$data['password'])//se o campo não tiver preenchido, retira ele do array
-        {
-            unset($data['password']);
-        }
 
         $messages =  $this->validateMsg();
 

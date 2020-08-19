@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function () {
 
   Route::resource('/users', 'UserController');
-  Route::resource('/create', 'UserController');
+  Route::resource('/permissions', 'PermissionController');
   
 
 });
