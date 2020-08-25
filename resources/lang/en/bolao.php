@@ -17,12 +17,15 @@ return [
     'lang' => 'pt-br',
     'addUser' => 'Add User',
     'addPermission' => 'Add Permission',
+    'addRole' => 'Add Role',
     'clean' => 'Clean',
     'search' => 'Search',
     'user_list' => 'User',
     'permission_list' => 'Permissions',
+    'Role_list' => 'Roles',
     'user' => 'User',
     'permission' => 'Permission',
+    'Role' => 'Role',
     'list' => ':page List',
     'create_crud' => 'Add :page',
     'edit_crud' => 'Edit :page',
@@ -36,7 +39,11 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
     'action' => 'Action',
-    'confirmDelete'=> 'Do you want to delete this record?'
+    'confirmDelete'=> 'Do you want to delete this record?',
+    'Manage_users'=> 'Manage users',
+    'Manage_permissions'=> 'Manage permissions',
+    'Manage_roles'=> 'Manage roles',
+    'dashboard'=> 'Dashboard'
     
 
 ];
