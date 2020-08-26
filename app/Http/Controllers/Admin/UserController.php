@@ -204,12 +204,12 @@ class UserController extends Controller
 
       if($this->model->update($data,$id)){
 
-        return $this->sessionMsg(trans('bolao.record_successfully_added'),'success', $routeName.".index");
+        return $this->sessionMsg(trans('bolao.record_successfully_updated'),'success', $routeName.".index");
        
 
       }else{
 
-        return $this->sessionMsg(trans('bolao.error_adding_record'),'error','back');
+        return $this->sessionMsg(trans('bolao.error_editing_record'),'error','back');
        
     
       }
