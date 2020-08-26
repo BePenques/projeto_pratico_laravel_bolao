@@ -25,7 +25,7 @@ class RoleRepository extends AbstractRepository implements RoleRepositoryInterfa
       $register = $this->findById($id);
       if($register){
 
-         $this->removePermissions($register);//remove as permissoes antigas pra colocar as novas selecionadas
+        $this->removePermissions($register);//remove as permissoes antigas pra colocar as novas selecionadas
 
         if(isset($data['permissions']) && count($data['permissions'])){
             foreach($data['permissions'] as $key => $value){

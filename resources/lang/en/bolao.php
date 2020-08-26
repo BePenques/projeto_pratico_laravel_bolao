@@ -45,7 +45,8 @@ return [
     'Manage_permissions'=> 'Manage permissions',
     'Manage_roles'=> 'Manage roles',
     'dashboard'=> 'Dashboard',
-    'select_permissions'=> 'Select one or more permissions (Optional)'
+    'select_permissions'=> 'Select one or more permissions (Optional)',
+    'select_roles'=> 'Select one or more roles (Optional)'
     
 
 ];

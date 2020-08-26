@@ -46,7 +46,8 @@ return [
     'Manage_permissions'=> 'Gerenciar Permissões',
     'Manage_roles'=> 'Gerenciar Funções',
     'dashboard'=> 'Painel de controle',
-    'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)'
+    'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)',
+    'select_roles'=> 'Selecione uma ou mais funções (Opcional)'
     
 
     
