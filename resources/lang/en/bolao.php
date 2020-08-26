@@ -43,7 +43,8 @@ return [
     'Manage_users'=> 'Manage users',
     'Manage_permissions'=> 'Manage permissions',
     'Manage_roles'=> 'Manage roles',
-    'dashboard'=> 'Dashboard'
+    'dashboard'=> 'Dashboard',
+    'select_permissions'=> 'Select one or more permissions (Optional)'
     
 
 ];

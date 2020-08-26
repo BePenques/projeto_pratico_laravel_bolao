@@ -17,5 +17,14 @@
             </span>
         @enderror
     </div>
+    <div class="form-group col-6">
+        <label for="permissions">{{ __('bolao.select_permissions') }}</label>
+        <select class="custom-select js-example-basic-multiple" multiple="multiple" name="permissions[]" id="">
+            @foreach ($permissions as $key => $value)
+                <option value="{{$value->id}}">{{$value->name}}</option>
+            @endforeach           
+        </select> 
+
+    </div>
 </div>
           

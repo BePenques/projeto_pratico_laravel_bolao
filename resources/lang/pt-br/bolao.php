@@ -43,7 +43,8 @@ return [
     'Manage_users'=> 'Gerenciar usuários',
     'Manage_permissions'=> 'Gerenciar Permissões',
     'Manage_roles'=> 'Gerenciar Funções',
-    'dashboard'=> 'Painel de controle'
+    'dashboard'=> 'Painel de controle',
+    'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)'
     
 
     

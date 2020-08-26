@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\RoleRepositoryInterface;
+use App\Repositories\Contracts\PermissionRepositoryInterface;
 use Validator;
 
 
@@ -15,14 +16,16 @@ class RoleController extends Controller
     private $paginate = 1;
     private $search = ['name','description'];//list of columns from 'findWhereLike'
     private $model;
+    private $modelPermission;
     private $titleAdd;
 
 
 
 
-    public function __construct(RoleRepositoryInterface $model)
+    public function __construct(RoleRepositoryInterface $model, PermissionRepositoryInterface $modelPermission)
     {
       $this->model = $model;
+      $this->modelPermission = $modelPermission;
 
     }
     /**
@@ -68,6 +71,8 @@ class RoleController extends Controller
       $page_create = trans('bolao.Role');
       $page = trans('bolao.Role_list');
 
+      $permissions = $this->modelPermission->all('name');
+
       $routeName = $this->route;
 
       $breadcrumb = $this->breadcrumb(route($routeName.".index"),trans('bolao.list',['page'=>$page]),'',trans('bolao.create_crud',['page'=>$page_create]));//breadcrumb($url1, $title1, $url2, $title2)
@@ -76,7 +81,7 @@ class RoleController extends Controller
       $titleAdd = trans('bolao.edit_crud',['page'=>$page_create]);
       $action = route($routeName.'.store');
 
-        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName','action', 'breadcrumb','titleAdd'));
+        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName','action', 'breadcrumb','titleAdd','permissions'));
     }
 
     /**
@@ -163,12 +168,15 @@ class RoleController extends Controller
         $page_create = trans('bolao.Role');
         $page = trans('bolao.Role_list');
 
+        $permissions = $this->modelPermission->all('name');
+
+
         $breadcrumb = $this->breadcrumb(route($routeName.".index"),trans('bolao.list',['page'=>$page]),'',trans('bolao.edit_crud',['page'=>$page_create]));//breadcrumb($url1, $title1, $url2, $title2)
 
      
       $action = route($routeName.".update",$register->id);
 
-      return view('admin.'.$routeName.'.edit', compact('register','page', 'page_create','routeName', 'breadcrumb', 'action'));
+      return view('admin.'.$routeName.'.edit', compact('register','page', 'page_create','routeName', 'breadcrumb', 'action','permissions'));
 
 
       }else{
