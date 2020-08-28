@@ -41,4 +41,33 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function hasRoles($roles)
+    {
+
+        $userRoles = $this->roles;//retorna a lista de funçoes/papeis desse usuário
+
+        return $roles->intersect($userRoles)->count();
+    //compara se uma lista tem elementos parecidos com da outra lista
+    //compara a lista de papeis do usuario com a lista de funçoes relaciondas a determinada permissao
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->hasRole("SuperAdmin");
+    }
+
+
+    public function hasRole($role)
+    {
+
+       if(is_string($role)){//se for string transforma em objecto
+          
+            $role = Role::where('name','=',$role)->firstOrFail();
+
+       }
+
+        return (boolean) $this->roles()->find($role->id);//procura nos papeis do usuario se tem o id de SuperAdmin
+      
+    }
 }

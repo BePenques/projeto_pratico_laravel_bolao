@@ -27,6 +27,11 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
     public function update(array $data, int $id):Bool
     {
       $register = $this->findById($id);
+
+      // if (!$register->can('edit-user')) {
+      //   return false;
+      // }
+
       if($register){
           if($data['password'] ?? false)//se não existir o campo data retorna false
           {

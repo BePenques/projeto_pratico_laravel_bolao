@@ -15,12 +15,16 @@
                         </div>
                     @endif
                     <div class="row">
-                        <div onclick="window.location='{{route('users.index')}}'" style="cursor:pointer" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">@lang('bolao.list',['page'=>__('bolao.user_list')])</div>
-                            <div class="card-body">
-                                <p class="card-text">@lang('bolao.Manage_users')</p>
+
+                        @can('users-list')
+                            <div onclick="window.location='{{route('users.index')}}'" style="cursor:pointer" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">@lang('bolao.list',['page'=>__('bolao.user_list')])</div>
+                                <div class="card-body">
+                                    <p class="card-text">@lang('bolao.Manage_users')</p>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
+
                         <div onclick="window.location='{{route('roles.index')}}'" style="cursor:pointer; margin-left:10px" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">@lang('bolao.list',['page'=>__('bolao.Role_list')])</div>
                             <div class="card-body">

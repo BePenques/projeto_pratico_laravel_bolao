@@ -55,6 +55,7 @@
                 <option {{$select}} value="{{$value->id}}">{{$value->name}}</option>
             @endforeach           
         </select> 
+        <p>Obs: Usuários com a função 'SuperAdmin' tem acesso total ao sistema</p>
     </div>
 </div>
           

@@ -195,6 +195,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+      $this->authorize('edit-user');
+
       $data = $request->all();
 
       if(!$data['password'])//se o campo não tiver preenchido, retira ele do array
