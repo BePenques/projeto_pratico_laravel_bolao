@@ -4,7 +4,7 @@
 
 Projeto de um Sistema de Bolão de Apostas Familiar desenvolvido durante o curso
 <a href="https://www.udemy.com/course/projeto-pratico-com-laravel/">Projeto Prático com Laravel</a> da plataforma Udemy,
-utilizando o framework PHP Laravel, com controle de acesso ACl, internacionalização e padrão repositório
+utilizando o framework PHP Laravel, com controle de acesso ACL, internacionalização e padrão repositório
 
 ## Primeiros Passos
 
