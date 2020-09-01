@@ -30,6 +30,7 @@
         <label for="password">{{ __('bolao.confirmPassword') }}</label>
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="">
     </div>
+    
     <div class="form-group col-6">
         <label for="roles">{{ __('bolao.select_roles') }}</label>
         <select class="custom-select js-example-basic-multiple" multiple="multiple" name="roles[]" id="">
