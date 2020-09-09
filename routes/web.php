@@ -29,13 +29,24 @@ Route::get('lang', function () {
 })->name('lang');
 
 //rota para alterar a linguagem
-Route::get('/', function () {
+Route::get('/model', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('Site')->group(function () {
+
+  Route::get('/', 'MainController@index')->name('main');
+  
+});
+
+
+Route::middleware('auth')->namespace('Admin')->group(function () {
+
+  Route::get('/home', 'HomeController@index')->name('home');
+  
+});
 
 //  $this->middleware('auth'); proteger os metodos sob autenticação
 Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function () {
