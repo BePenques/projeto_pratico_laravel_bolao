@@ -43,7 +43,7 @@
      <!-- Navigation-->
      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">FamilyBets</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{route('main')}}#page-top">{{ config('app.name', 'Laravel') }}</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ml-1"></i>
@@ -51,11 +51,11 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                    
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('main')}}#portfolio">Bolão</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('main')}}#portfolio">@lang('bolao.betting_list')</a></li>
              
                     @guest
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>    
-                        <li class="nav-item"><a class="nav-link " href="{{ route('register') }}">Cadastro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">@lang('bolao.login')</a></li>    
+                        <li class="nav-item"><a class="nav-link " href="{{ route('register') }}">@lang('bolao.register')</a></li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link" >  {{ Auth::user()->name }} </a>
@@ -71,7 +71,6 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-
                        
                     @endguest
                     <li class="nav-item">

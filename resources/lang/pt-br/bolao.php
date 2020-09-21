@@ -47,7 +47,12 @@ return [
     'Manage_roles'=> 'Gerenciar Funções',
     'dashboard'=> 'Painel de controle',
     'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)',
-    'select_roles'=> 'Selecione uma ou mais funções (Opcional)'
+    'select_roles'=> 'Selecione uma ou mais funções (Opcional)',
+    'welcome'=>'Bem vindo ao site de bolões!',
+    'enjoy'=>'Curta com sua família',
+    'check_list'=>'Confira a lista aqui',
+    'betting_list'=>'BOLÕES',
+    'join_create'=>'Participe ou crie o seu!'
     
 
     

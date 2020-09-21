@@ -46,7 +46,13 @@ return [
     'Manage_roles'=> 'Manage roles',
     'dashboard'=> 'Dashboard',
     'select_permissions'=> 'Select one or more permissions (Optional)',
-    'select_roles'=> 'Select one or more roles (Optional)'
+    'select_roles'=> 'Select one or more roles (Optional)',
+    'welcome'=>'Welcome to the betting site!',
+    'enjoy'=>'Enjoy with your family',
+    'check_list'=>'Check the list here',
+    'betting_list'=>'BETTING LIST',
+    'join_create'=>'Join or create your own!'
+
     
 
 ];

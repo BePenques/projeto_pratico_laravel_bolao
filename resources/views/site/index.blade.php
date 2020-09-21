@@ -4,9 +4,9 @@
  <!-- Masthead-->
  <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">Bem vindo ao site de bolões!</div>
-        <div class="masthead-heading text-uppercase">Curta com a sua familia</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Confira a lista de Bolões</a>
+        <div class="masthead-subheading">@lang('bolao.welcome')</div>
+        <div class="masthead-heading text-uppercase">@lang('bolao.enjoy')</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">@lang('bolao.check_list')</a>
     </div>
 </header>
 
@@ -14,8 +14,8 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Bolões</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">@lang('bolao.betting_list')</h2>
+            <h3 class="section-subheading text-muted">@lang('bolao.join_create')</h3>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4">
