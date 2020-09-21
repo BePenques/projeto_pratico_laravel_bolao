@@ -47,7 +47,7 @@ return [
     'dashboard'=> 'Dashboard',
     'select_permissions'=> 'Select one or more permissions (Optional)',
     'select_roles'=> 'Select one or more roles (Optional)',
-    'welcome'=>'Welcome to the betting site!',
+    'welcome'=>'Welcome to betting platform!',
     'enjoy'=>'Enjoy with your family',
     'check_list'=>'Check the list here',
     'betting_list'=>'BETTING LIST',

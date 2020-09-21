@@ -58,6 +58,9 @@
                         <li class="nav-item"><a class="nav-link " href="{{ route('register') }}">@lang('bolao.register')</a></li>
                     @else
                         <li class="nav-item">
+                            <a class="nav-link"  href="{{route('home')}}" >@lang('bolao.dashboard')</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" >  {{ Auth::user()->name }} </a>
                         </li>
 
