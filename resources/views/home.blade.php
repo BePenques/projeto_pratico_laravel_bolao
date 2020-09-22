@@ -10,14 +10,14 @@
     <div class="container">
        
         <div class="row">
-            @can('users-list')
+         @can('users-list')
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('users.index')}}'" style="cursor:pointer">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link" >
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                    <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">@lang('bolao.list',['page'=>__('bolao.user_list')])</div>
@@ -28,7 +28,7 @@
             @endcan 
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('roles.index')}}'" style="cursor:pointer">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link" >
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
@@ -42,7 +42,7 @@
             </div>  
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('permissions.index')}}'" style="cursor:pointer">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link" >
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>

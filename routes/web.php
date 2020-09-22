@@ -53,8 +53,8 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
 
   Route::resource('/users', 'UserController');
     Route::get('/users', 'UserController@index')->name('users.index')->middleware('can:users-list');
-    Route::get('/users/create', 'UserController@create')->name('users.create')->middleware('can:create-users');
-    Route::post('/users', 'UserController@store')->name('users.store')->middleware('can:create-users');
+    Route::get('/users/create', 'UserController@create')->name('users.create')->middleware('can:users-create');
+    Route::post('/users', 'UserController@store')->name('users.store')->middleware('can:users-create');
   Route::resource('/permissions', 'PermissionController');
   Route::resource('/roles', 'RoleController');
   

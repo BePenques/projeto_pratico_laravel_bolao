@@ -8,7 +8,9 @@
 
         <x-form_component :action="$action" method="PUT">
           @include('admin.'.$routeName.'.form')
+         
           <button type="submit" class="btn btn-primary btn-lg float-right">{{ __('bolao.register-verb') }}</button>
+        
         </x-form_component>
 
       </x-page_component>
