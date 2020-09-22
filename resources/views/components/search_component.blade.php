@@ -3,7 +3,7 @@
   <form class="form-inline" method="GET" action="{{route($routeName.'.index')}}">
     <div class="form-group mb-2">
     <!--  <button type="submit" class="btn btn-primary"> {{$titleAdd}}</button> -->
-    @can('create-user')
+    @can('create-users')
       <a class="btn btn-primary" href="{{route($routeName.'.create')}}">{{$titleAdd}}</a>
     @endcan
     </div>

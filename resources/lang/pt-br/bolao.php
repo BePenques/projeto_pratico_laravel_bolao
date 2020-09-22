@@ -52,7 +52,8 @@ return [
     'enjoy'=>'Curta com sua família',
     'check_list'=>'Confira a lista aqui',
     'betting_list'=>'BOLÕES',
-    'join_create'=>'Participe ou crie o seu!'
+    'join_create'=>'Participe ou crie o seu!',
+    'access_denied'=>'Acesso Negado'
     
 
     

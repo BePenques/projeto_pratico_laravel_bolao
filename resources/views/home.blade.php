@@ -7,10 +7,9 @@
     <x-alert :msg="session('msg'??'')" :status="session('status')" />  <!-- status: success, error or notification-->
 
 <span id="portfolio">
-    <div class="container">
-       
+    <div class="container">     
         <div class="row">
-         @can('users-list')
+        @can('users-list')
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('users.index')}}'" style="cursor:pointer">
                     <a class="portfolio-link" >
@@ -25,7 +24,8 @@
                     </div>
                 </div>
             </div> 
-            @endcan 
+        @endcan 
+        @can('acl-full-permission')
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('roles.index')}}'" style="cursor:pointer">
                     <a class="portfolio-link" >
@@ -53,7 +53,8 @@
                         <div class="portfolio-caption-subheading text-muted">@lang('bolao.Manage_permissions')</div>
                     </div>
                 </div>
-            </div>       
+            </div>  
+        @endcan      
         </div>
     </div>
 </span>

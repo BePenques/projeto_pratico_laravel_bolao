@@ -51,7 +51,8 @@ return [
     'enjoy'=>'Enjoy with your family',
     'check_list'=>'Check the list here',
     'betting_list'=>'BETTING LIST',
-    'join_create'=>'Join or create your own!'
+    'join_create'=>'Join or create your own!',
+    'access_denied'=>'Access Denied'
 
     
 

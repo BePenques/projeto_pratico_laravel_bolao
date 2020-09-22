@@ -52,11 +52,14 @@ Route::middleware('auth')->namespace('Admin')->group(function () {
 Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function () {
 
   Route::resource('/users', 'UserController');
-    Route::get('/users', 'UserController@index')->name('users.index')->middleware('can:users-list');
-    Route::get('/users/create', 'UserController@create')->name('users.create')->middleware('can:users-create');
-    Route::post('/users', 'UserController@store')->name('users.store')->middleware('can:users-create');
+    // Route::get('/users', 'UserController@index')->name('users.index')->middleware('can:users-list');
+    // Route::get('/users/create', 'UserController@create')->name('users.create')->middleware('can:users-create');
+    // Route::post('/users', 'UserController@store')->name('users.store')->middleware('can:users-create'); 
+
+});
+
+Route::prefix('admin')->middleware(['auth', 'can:acl-full-permission'])->namespace('Admin')->group(function () {
   Route::resource('/permissions', 'PermissionController');
-  Route::resource('/roles', 'RoleController');
-  
+  Route::resource('/roles', 'RoleController'); 
 
 });

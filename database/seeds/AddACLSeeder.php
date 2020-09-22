@@ -27,11 +27,37 @@ class AddACLSeeder extends Seeder
         $userGerente->roles()->attach($gerenteACL);
 
         //criar permissão
+
+        //permissao para visualizar a lista de usuarios
         $UsersList = \App\Permission::firstOrCreate(['name'=>'users-list'],
         ['description'=>'acesso a lista de usuários'    
         ]);
 
-       // $admACL->permissions()->attach($UsersList);
+        //permissao para criar usuario
+        $CreateUsers = \App\Permission::firstOrCreate(['name'=>'create-users'],
+        ['description'=>'acesso a criar usuário'    
+        ]);
+        //permissao para ver detalhes do usuario
+        $ShowUsers = \App\Permission::firstOrCreate(['name'=>'show-users'],
+        ['description'=>'acesso a ver detalhes do usuário'    
+        ]);
+         //permissao para editar usuario
+        $EditUsers = \App\Permission::firstOrCreate(['name'=>'edit-users'],
+        ['description'=>'acesso a editar usuário'    
+        ]);
+         //permissao para deletar usuario
+        $DeleteUsers = \App\Permission::firstOrCreate(['name'=>'delete-users'],
+        ['description'=>'acesso a deletar usuário'    
+        ]);
+
+        $FullPermission = \App\Permission::firstOrCreate(['name'=>'acl-full-permission'],
+        ['description'=>'acesso a todas as permissoes do sistema'    
+        ]);
+
+        //relacionamewnto role com permissions
+
+        $gerenteACL->permissions()->attach($UsersList);
+        $gerenteACL->permissions()->attach($CreateUsers);
 
         
     }

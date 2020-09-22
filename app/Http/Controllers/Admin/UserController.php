@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\RoleRepositoryInterface;
 use Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
+
+
 
 
 class UserController extends Controller
@@ -35,6 +39,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
+      if (Gate::denies('users-list')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
 
       $columnList = ['id'=>'#','name'=>trans('bolao.name'), 'email'=>'E-mail', 'acao'=>trans('bolao.action')];
 
@@ -68,6 +77,11 @@ class UserController extends Controller
     public function create()
     {
 
+      if (Gate::denies('create-users')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
+
       $page_create = trans('bolao.user');
       $page = trans('bolao.user_list');
 
@@ -92,6 +106,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+      if (Gate::denies('create-users')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
+
       $data = $request->all();
 
       $messages =  $this->validateMsg();
@@ -121,6 +141,11 @@ class UserController extends Controller
      */
     public function show($id, Request $request)
     {
+      if (Gate::denies('show-users')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
+
       $routeName = $this->route;
 
       $register = $this->model->findById($id);
@@ -159,9 +184,23 @@ class UserController extends Controller
     public function edit($id)
     {
 
+      
+      if (Gate::denies('edit-users')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
+
+      
+
       $routeName = $this->route;
 
+      // não deixa possivel editar um SuperAdmin
       $register = $this->model->findById($id);
+  //     if($register->name == 'SuperAdmin'){
+  //     if($this->model->hasRoles('SuperAdmin') == false){
+  //       dd("não é adm");
+  //       return $this->sessionMsg(trans('bolao.access_denied'),'error',$routeName.".index");
+  //     }
 
       if($register){
 
@@ -196,7 +235,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-      $this->authorize('edit-user');
+      if (Gate::denies('edit-users')) {
+   
+        return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+      }
 
       $data = $request->all();
 
@@ -216,6 +258,7 @@ class UserController extends Controller
 
         return $this->sessionMsg(trans('bolao.record_successfully_updated'),'success', $routeName.".index");
        
+        
 
       }else{
 
@@ -227,7 +270,18 @@ class UserController extends Controller
 
   public function destroy($id)
   {
+    if (Gate::denies('delete-users')) {
+   
+      return $this->sessionMsg(trans('bolao.access_denied'),'error','home');
+    }
+
     $routeName = $this->route;
+
+    // não deixa possivel deletar um SuperAdmin
+    // $register = $this->model->findById($id);
+    // if($register->name == 'SuperAdmin'){
+    //   return $this->sessionMsg(trans('bolao.access_denied'),'error',$routeName.".index");
+    // }
 
     if($this->model->delete($id)){
 
