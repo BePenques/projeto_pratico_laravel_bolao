@@ -57,6 +57,11 @@ Para iniciar a aplicação, execute o comando: php artisan serve pelo terminal, 
 
 A aplicação estará disponível no endereço indicado (por padrão, o endereço http://127.0.0.1:8000 é utilizado).
 
+Opcional: na pasta do projeto, execute o seguinte comando - php artisan db:seed (para gerar os registros iniciais)
+
+Obs:. SuperAdmin login: superadmin@mail.com | senha: admin123
+      Gerente    login: gerente@mail.com | senha: gerente123
+
 ## Notas
 
 Projeto(em desenvolvimento) para fins de estudo e utilização do framework PHP Laravel, em Aplicações Web.
