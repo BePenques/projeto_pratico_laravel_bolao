@@ -25,6 +25,20 @@
                 </div>
             </div> 
         @endcan 
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item" onclick="window.location='{{route('bettings.index')}}'" style="cursor:pointer">
+                <a class="portfolio-link" >
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                </a>
+                <div class="portfolio-caption">
+                    <div class="portfolio-caption-heading">@lang('bolao.betting_list')</div>
+                    <div class="portfolio-caption-subheading text-muted">@lang('bolao.Manage_bettings')</div>
+                </div>
+            </div>
+        </div> 
         @can('acl-full-permission')
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item" onclick="window.location='{{route('roles.index')}}'" style="cursor:pointer">

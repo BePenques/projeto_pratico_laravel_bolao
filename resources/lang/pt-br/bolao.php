@@ -18,13 +18,16 @@ return [
     'addUser' => 'Adicionar Usuário',
     'addRole' => 'Adicionar Função',
     'addPermission' => 'Adicionar Permissão',
+    'addBetting' => 'Adicionar Bolão',
     'clean' => 'Limpar',
     'search' => 'Buscar',
     'user_list' => 'Usuários',
     'permission_list' => 'Permissões',
+    'betting_list' => 'Bolões',
     'Role_list' => 'Funções',
     'user' => 'Usuário',
     'permission' => 'Permissão',
+    'Betting' => 'Bolão',
     'Role' => 'Função',
     'list' => 'Lista de :page',
     'create_crud' => 'Adicionar :page',
@@ -44,6 +47,7 @@ return [
     'confirmDelete'=> 'Deseja deletar esse registro?',
     'Manage_users'=> 'Gerenciar usuários',
     'Manage_permissions'=> 'Gerenciar Permissões',
+    'Manage_bettings'=> 'Gerenciar Bolões',
     'Manage_roles'=> 'Gerenciar Funções',
     'dashboard'=> 'Painel de controle',
     'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)',
@@ -53,7 +57,12 @@ return [
     'check_list'=>'Confira a lista aqui',
     'betting_list'=>'BOLÕES',
     'join_create'=>'Participe ou crie o seu!',
-    'access_denied'=>'Acesso Negado'
+    'access_denied'=>'Acesso Negado',
+    'title'=>'Título',
+    'current_round'=>'Rodada Atual',
+    'score_points'=>'Resultado dos pontos',
+    'extra_points'=>'Pontos Extras',
+    'rate_points'=>'Taxa de pontos'
     
 
     

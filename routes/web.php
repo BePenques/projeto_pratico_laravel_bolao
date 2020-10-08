@@ -61,5 +61,6 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
 Route::prefix('admin')->middleware(['auth', 'can:acl-full-permission'])->namespace('Admin')->group(function () {
   Route::resource('/permissions', 'PermissionController');
   Route::resource('/roles', 'RoleController'); 
+  Route::resource('/bettings', 'BettingController'); 
 
 });
