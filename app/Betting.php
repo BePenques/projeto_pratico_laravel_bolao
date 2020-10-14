@@ -20,6 +20,11 @@ class Betting extends Model
         return $this->belongsTo('App\User','user_id');
     }
 
+    public function rounds()
+    {
+        return $this->hasMany('App\Round');
+    }
+
     public function getUserNameAttribute()
     {
         return $this->user->name;
