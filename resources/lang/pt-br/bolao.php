@@ -62,7 +62,8 @@ return [
     'current_round'=>'Rodada Atual',
     'score_points'=>'Resultado dos pontos',
     'extra_points'=>'Pontos Extras',
-    'rate_points'=>'Taxa de pontos'
+    'rate_points'=>'Taxa de pontos',
+    'user'=>'Usuário'
     
 
     

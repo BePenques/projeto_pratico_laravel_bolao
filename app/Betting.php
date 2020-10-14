@@ -17,7 +17,12 @@ class Betting extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id');
+    }
+
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
     }
 }
 

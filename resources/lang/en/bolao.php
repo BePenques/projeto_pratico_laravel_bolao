@@ -60,7 +60,8 @@ return [
     'current_round'=>'Current Round',
     'score_points'=>'Score points',
     'extra_points'=>'Extra Points',
-    'rate_points'=>'Rate Points'
+    'rate_points'=>'Rate Points',
+    'user'=>'User'
 
     
 

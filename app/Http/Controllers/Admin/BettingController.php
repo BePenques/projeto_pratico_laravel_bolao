@@ -35,6 +35,7 @@ class BettingController extends Controller
 
       $columnList = ['id'=>'#',
                      'title'=>trans('bolao.title'), 
+                     'user_name'=>trans('bolao.user'), 
                      'current_round'=>trans('bolao.current_round'),
                      'score_points'=>trans('bolao.score_points'),
                      'extra_points'=>trans('bolao.extra_points'),
@@ -50,6 +51,8 @@ class BettingController extends Controller
       }else {
         $list = $this->model->paginate($this->paginate,'id', 'DESC');
       }
+    
+
 
       $page = trans('bolao.betting_list');
 
@@ -124,6 +127,11 @@ class BettingController extends Controller
       $routeName = $this->route;
 
       $register = $this->model->findById($id);
+
+      
+      // if(!Empty($register)){
+      //   dd($register->user);
+      // }
 
       if($register){
 
