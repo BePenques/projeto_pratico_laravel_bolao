@@ -17,6 +17,7 @@ return [
     'lang' => 'en',
     'addUser' => 'Adicionar Usuário',
     'addRole' => 'Adicionar Função',
+    'addRound' => 'Adicionar Rodada',
     'addPermission' => 'Adicionar Permissão',
     'addBetting' => 'Adicionar Bolão',
     'clean' => 'Limpar',
@@ -24,10 +25,12 @@ return [
     'user_list' => 'Usuários',
     'permission_list' => 'Permissões',
     'betting_list' => 'Bolões',
+    'Round_list' => 'Rodadas',
     'Role_list' => 'Funções',
     'user' => 'Usuário',
     'permission' => 'Permissão',
     'Betting' => 'Bolão',
+    'Round' => 'Rodada',
     'Role' => 'Função',
     'list' => 'Lista de :page',
     'create_crud' => 'Adicionar :page',
@@ -49,6 +52,7 @@ return [
     'Manage_permissions'=> 'Gerenciar Permissões',
     'Manage_bettings'=> 'Gerenciar Bolões',
     'Manage_roles'=> 'Gerenciar Funções',
+    'Manage_rounds'=> 'Gerenciar Rodadas',
     'dashboard'=> 'Painel de controle',
     'select_permissions'=> 'Selecione uma ou mais permissões (Opcional)',
     'select_roles'=> 'Selecione uma ou mais funções (Opcional)',
@@ -63,7 +67,11 @@ return [
     'score_points'=>'Resultado dos pontos',
     'extra_points'=>'Pontos Extras',
     'rate_points'=>'Taxa de pontos',
-    'user'=>'Usuário'
+    'user'=>'Usuário',
+    'betting_title'=>'Nome Bolão',
+    'date_start'=>'Data Inicial',
+    'date_end'=>'Data Final'
+    
     
 
     

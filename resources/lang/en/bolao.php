@@ -19,15 +19,18 @@ return [
     'addPermission' => 'Add Permission',
     'addRole' => 'Add Role',
     'addBetting' => 'Add Bet',
+    'addRound' => 'Add Round',
     'clean' => 'Clean',
     'search' => 'Search',
     'user_list' => 'User',
     'permission_list' => 'Permissions',
     'betting_list' => 'Bettings',
+    'Round_list' => 'Rounds',
     'Role_list' => 'Roles',
     'user' => 'User',
     'permission' => 'Permission',
     'Betting' => 'Betting',
+    'Round' => 'Round',
     'Role' => 'Role',
     'list' => ':page List',
     'create_crud' => 'Add :page',
@@ -48,6 +51,7 @@ return [
     'Manage_permissions'=> 'Manage permissions',
     'Manage_roles'=> 'Manage roles',
     'Manage_bettings'=> 'Manage bets',
+    'Manage_rounds'=> 'Manage Rounds',
     'dashboard'=> 'Dashboard',
     'select_permissions'=> 'Select one or more permissions (Optional)',
     'select_roles'=> 'Select one or more roles (Optional)',
@@ -61,7 +65,10 @@ return [
     'score_points'=>'Score points',
     'extra_points'=>'Extra Points',
     'rate_points'=>'Rate Points',
-    'user'=>'User'
+    'user'=>'User',
+    'betting_title'=>'Betting Title',
+    'date_start'=>'Initial Date',
+    'date_end'=>'Final Date'
 
     
 

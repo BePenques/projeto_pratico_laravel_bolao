@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\BettingRepositoryInterface;
+use App\Repositories\Contracts\RoundRepositoryInterface;
 use Validator;
 
 
 
-class BettingController extends Controller
+class RoundController extends Controller
 {
-    private $route = 'bettings';
+    private $route = 'rounds';
     private $paginate = 1;
     private $search = ['title'];//list of columns from 'findWhereLike'
     private $model;
@@ -20,7 +20,7 @@ class BettingController extends Controller
 
 
 
-    public function __construct(BettingRepositoryInterface $model)
+    public function __construct(RoundRepositoryInterface $model)
     {
       $this->model = $model;
 
@@ -35,12 +35,12 @@ class BettingController extends Controller
 
       $columnList = ['id'=>'#',
                      'title'=>trans('bolao.title'), 
-                     'user_name'=>trans('bolao.user'), 
-                     'current_round'=>trans('bolao.current_round'),
-                     'score_points'=>trans('bolao.score_points'),
-                     'extra_points'=>trans('bolao.extra_points'),
-                     'rate_points'=>trans('bolao.rate_points'),
+                     'betting_title'=>trans('bolao.betting_title'), 
+                     'date_start'=>trans('bolao.date_start'), 
+                     'date_end'=>trans('bolao.date_end'),   
                      'acao'=>trans('bolao.action')];
+
+  
 
       $search = "";
 
@@ -54,14 +54,14 @@ class BettingController extends Controller
     
 
 
-      $page = trans('bolao.betting_list');
+      $page = trans('bolao.Round_list');
 
       $routeName = $this->route;
 
       $breadcrumb = $this->breadcrumb('',trans('bolao.list',['page'=>$page]),'','');//breadcrumb($url1, $title1, $url2, $title2)
       
 
-      $titleAdd = trans('bolao.addBetting');
+      $titleAdd = trans('bolao.addRound');
 
         return view('admin.'.$routeName.'.index', compact('list','search','page', 'routeName','columnList', 'breadcrumb','titleAdd'));
     }
@@ -74,8 +74,12 @@ class BettingController extends Controller
     public function create()
     {
 
-      $page_create = trans('bolao.Betting');
-      $page = trans('bolao.betting_list');
+      $user = auth()->user();
+
+      $listRel = $user->bettings;
+
+      $page_create = trans('bolao.Round');
+      $page = trans('bolao.Round_list');
 
       $routeName = $this->route;
 
@@ -85,7 +89,7 @@ class BettingController extends Controller
       $titleAdd = trans('bolao.create_crud',['page'=>$page_create]);
       $action = route($routeName.'.store');
 
-        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName','action', 'breadcrumb','titleAdd'));
+        return view('admin.'.$routeName.'.create', compact('page','page_create', 'routeName','action', 'breadcrumb','titleAdd','listRel'));
     }
 
     /**
@@ -128,15 +132,10 @@ class BettingController extends Controller
 
       $register = $this->model->findById($id);
 
-      
-      // if(!Empty($register)){
-      //   dd($register->user);
-      // }
-
       if($register){
 
-        $page_create = trans('bolao.Betting');
-        $page = trans('bolao.betting_list');
+        $page_create = trans('bolao.Round');
+        $page = trans('bolao.Round_list');
 
         $breadcrumb = $this->breadcrumb(route($routeName.".index"),trans('bolao.list',['page'=>$page]),'',trans('bolao.details_crud',['page'=>$page_create]));//breadcrumb($url1, $title1, $url2, $title2)
         
@@ -174,8 +173,8 @@ class BettingController extends Controller
 
       if($register){
 
-        $page_create = trans('bolao.Betting');
-        $page = trans('bolao.betting_list');
+        $page_create = trans('bolao.Round');
+        $page = trans('bolao.Round_list');
 
         $breadcrumb = $this->breadcrumb(route($routeName.".index"),trans('bolao.list',['page'=>$page]),'',trans('bolao.edit_crud',['page'=>$page_create]));//breadcrumb($url1, $title1, $url2, $title2)
 
@@ -265,10 +264,8 @@ class BettingController extends Controller
 
       return $messages = [
         'title.required' =>__('bolao.Required',['atributo'=>trans('bolao.title')]),
-        'score_points.required' =>__('bolao.Required',['atributo'=>trans('bolao.score_points')]),
-        'extra_points.required' =>__('bolao.Required',['atributo'=>trans('bolao.extra_points')]),
-        'rate_points.required' =>__('bolao.Required',['atributo'=>trans('bolao.rate_points')]),
-        
+        'date_start.required' =>__('bolao.Required',['atributo'=>trans('bolao.date_start')]),
+        'date_end.required' =>__('bolao.Required',['atributo'=>trans('bolao.date_end')]),
       ];
 
     }
@@ -299,9 +296,10 @@ class BettingController extends Controller
       
       return Validator::make($data, [
           'title' => ['required', 'string', 'max:255'],
-          'score_points' => ['required'],
-          'extra_points' => ['required'],
-          'rate_points' => ['required'],
+          'date_start' => ['required'],
+          'date_end' => ['required'],
+          'betting_id' => ['required','integer'],
+        
           
         ],$messages)->validate();
       
