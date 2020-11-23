@@ -6,8 +6,10 @@
 
         <x-alert :msg="session('msg'??'')" :status="session('status'??'')" />  
 
-        <p>{{__('bolao.name')}}: {{$register->name}}</p>
-        <p>{{__('bolao.description')}}: {{$register->description}}</p>
+        <p>{{ __('bolao.title') }}: {{$register->title}}</p>
+          <p>{{ __('bolao.bet') }}: {{$register->betting_title}}</p>
+          <p>{{ __('bolao.date_start') }}: {{$register->date_start}}</p>
+          <p>{{ __('bolao.date_end') }}: {{$register->date_end}}</p>
 
         @if($delete)
           <x-form_component :action="$action" method="DELETE">

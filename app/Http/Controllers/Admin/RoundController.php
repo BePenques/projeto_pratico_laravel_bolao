@@ -169,6 +169,10 @@ class RoundController extends Controller
 
       $routeName = $this->route;
 
+      $user = auth()->user();
+
+      $listRel = $user->bettings;
+
       $register = $this->model->findById($id);
 
       if($register){
@@ -181,7 +185,7 @@ class RoundController extends Controller
      
       $action = route($routeName.".update",$register->id);
 
-      return view('admin.'.$routeName.'.edit', compact('register','page', 'page_create','routeName', 'breadcrumb', 'action'));
+      return view('admin.'.$routeName.'.edit', compact('register','page', 'page_create','routeName', 'breadcrumb', 'action', 'listRel'));
 
 
       }else{
@@ -202,6 +206,7 @@ class RoundController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
 
         $messages =  $this->validateMsg();
 

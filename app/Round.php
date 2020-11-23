@@ -17,18 +17,38 @@ class Round extends Model
     {
         return $this->belongsTo('App\Betting','betting_id');
     }
+    public function matches()
+    {
+        return $this->hasMany('App\Match');
+    }
     public function getBettingTitleAttribute()
     {
         return $this->betting->title;
     }
-    public function getDateStartAttribute($value)
+    public function setDateStartAttribute($value)
     {
-        return date("d/m/Y", strtotime(str_replace('-','/',$value)));
+        $date = date_create($value);
+  
+        $this->attributes['date_start'] = date_format($date,'Y-m-d');
     }
-    public function getDateEndAttribute($value)
+  
+    public function setDateEndAttribute($value)
     {
-         return date("d/m/Y", strtotime(str_replace('-','/',$value)));
-      
+        $date = date_create($value);
+  
+        $this->attributes['date_end'] = date_format($date,'Y-m-d');
+    }
+  
+    public function getDateStartSiteAttribute()
+    {
+      $date = date_create($this->date_start);
+      return date_format($date,'d/m/Y');
+    }
+  
+    public function getDateEndSiteAttribute()
+    {
+      $date = date_create($this->date_start);
+      return date_format($date,'d/m/Y');
     }
 
 }
