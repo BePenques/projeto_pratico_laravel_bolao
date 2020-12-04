@@ -21,20 +21,20 @@ class Match extends Model
 
     public function round()
     {
-        return $this->belongsTo('App\Round','round_id');
+        return $this->belongsTo('App\Round');
     }
 
     public function setDateAttribute($value)
     {
         $date = date_create($value);
-        $this->attributes['date'] = date_format($date, 'Y-m-d');
-       
+
+        $this->attributes['date'] = date_format($date,'Y-m-d H:i:s');
     }
-   
+
     public function getDateSiteAttribute()
     {
-        $date = date_create($this->date);
-        return date_format($date,'d/m/Y');
+      $date = date_create($this->date);
+      return date_format($date,'d/m/Y H:i:s');
     }
 
 }

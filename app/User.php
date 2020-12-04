@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class User extends Authenticatable
 {
@@ -40,6 +42,21 @@ class User extends Authenticatable
     public function bettings()
     {
         return $this->hasMany('App\Betting');
+    }
+
+    public function getRoundsAttribute(){//pegar os rounds que pertencem ao bolão
+
+        $bettings = $this->bettings;//lista de bolões desse usuário
+        $rounds = [];
+
+        foreach ($bettings as $key => $value) {
+            $rounds[]= $value->rounds;
+        }
+
+        return Arr::collapse($rounds);//agrupa todos os rounds em uma unica chave(sem separar por bolão)
+
+        //Exemplo: $array = Arr::collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+        // resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 
     public function roles()

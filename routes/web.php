@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
   Route::resource('/users', 'UserController');
   Route::resource('/bettings', 'BettingController'); 
   Route::resource('/rounds', 'RoundController'); 
+  Route::resource('/matches', 'MatchController'); 
     // Route::get('/users', 'UserController@index')->name('users.index')->middleware('can:users-list');
     // Route::get('/users/create', 'UserController@create')->name('users.create')->middleware('can:users-create');
     // Route::post('/users', 'UserController@store')->name('users.store')->middleware('can:users-create'); 

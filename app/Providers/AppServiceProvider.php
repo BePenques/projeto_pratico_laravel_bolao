@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
       'App\Repositories\Eloquent\BettingRepository');
       $this->app->bind('App\Repositories\Contracts\RoundRepositoryInterface',
       'App\Repositories\Eloquent\RoundRepository');
+      $this->app->bind('App\Repositories\Contracts\MatchRepositoryInterface',
+      'App\Repositories\Eloquent\MatchRepository');
       //2º qual a classe que essa interface vai receber uma instancia
 
     }
