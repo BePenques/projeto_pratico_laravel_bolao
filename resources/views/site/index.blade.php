@@ -18,6 +18,7 @@
             <h3 class="section-subheading text-muted">@lang('bolao.join_create')</h3>
         </div>
         <div class="row">
+            @foreach ($list as $value)
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
@@ -27,12 +28,13 @@
                         <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
                     </a>
                     <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Threads</div>
-                        <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                        <div class="portfolio-caption-heading">{{$value->title}}</div>
+                    <div class="portfolio-caption-subheading text-muted">{{$value->user_name}}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
+            @endforeach
+            {{-- <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                         <div class="portfolio-hover">
@@ -101,7 +103,7 @@
                         <div class="portfolio-caption-subheading text-muted">Photography</div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

@@ -35,7 +35,8 @@ class MatchController extends Controller
 
       $columnList = ['id'=>'#',
                      'title'=>trans('bolao.title'), 
-                     'stadium'=>trans('bolao.stadium'), 
+                     'round_title'=>trans('bolao.Round'), 
+                    //  'stadium'=>trans('bolao.stadium'), 
                      'team_a'=>trans('bolao.team_a'), 
                      'team_b'=>trans('bolao.team_b'),   
                      'result'=>trans('bolao.result'),   
