@@ -41,6 +41,13 @@ Route::namespace('Site')->group(function () {
   
 });
 
+Route::middleware('auth')->namespace('Site')->group(function () {
+
+  Route::post('/sigh/{id}', 'MainController@sign')->name('sign');
+  Route::get('/sigh/{id}', 'MainController@signNoLogin')->name('sign');
+  
+});
+
 
 Route::middleware('auth')->namespace('Admin')->group(function () {
 

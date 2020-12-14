@@ -14,4 +14,12 @@ class MainController extends Controller
 
         return view('site.index', compact('list'));
     }
+
+    public function signNoLogin(){
+        return redirect()->route('main');
+    }
+
+    public function sign($id){
+        dd("OK".$id);
+    }
 }

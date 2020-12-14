@@ -92,4 +92,9 @@ class User extends Authenticatable
         return (boolean) $this->roles()->find($role->id);//procura nos papeis do usuario se tem o id de SuperAdmin
       
     }
+
+    public function myBetting()
+    {
+        return $this->belongsToMany('App\Betting');
+    }
 }
