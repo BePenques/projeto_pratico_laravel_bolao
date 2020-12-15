@@ -33,8 +33,11 @@
                        <form method="post" action="{{route('sign', $value->id)}}">
                         {{ csrf_field() }} <!-- token de segurança -->
                             <a class="btn btn-info" href="">Ver rodadas</a>
-                            <button class="btn btn-danger"> Deixar Bolão</button>
-                            <button class="btn btn-success"> Participar </button>
+                            @if($value->subscriber ?? false)
+                                <button class="btn btn-danger"> Deixar Bolão</button>
+                            @else
+                                 <button class="btn btn-success"> Participar </button>
+                            @endif
                        </form>
                         </div>
                     </div>
@@ -170,9 +173,15 @@
                                     <li>Valor Extra: {{$value->extra_points}}</li>
                                     <li>Taxa: {{$value->rate_points}}</li>
                                 </ul>
+                                <form method="post" action="{{route('sign', $value->id)}}">
+                                    {{ csrf_field() }} <!-- token de segurança -->
                                 <a class="btn btn-info" href="">Ver rodadas</a>
-                                <button class="btn btn-danger"> Deixar Bolão</button>
-                                <button class="btn btn-success"> Participar </button>
+                                @if($value->subscriber ?? false)
+                                     <button class="btn btn-danger"> Deixar Bolão</button>
+                                @else
+                                    <button class="btn btn-success"> Participar </button>
+                                @endif
+                                </form>
                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                                     <i class="fas fa-times mr-1"></i>
                                     Close Project

@@ -16,10 +16,13 @@ class MainController extends Controller
     }
 
     public function signNoLogin(){
-        return redirect()->route('main');
+        return redirect(route('main').'#portfolio');
     }
 
-    public function sign($id){
-        dd("OK".$id);
+    public function sign($id, BettingRepositoryInterface $bettingRepository){
+
+        $bettingRepository->BettingUser($id);
+        return redirect(route('main').'#portfolio');
+
     }
 }

@@ -12,7 +12,22 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
 
     public function list():Collection
     {
-       return Betting::all();
+       $list =  Betting::all();
+       $user = Auth()->user();
+
+       if($user){
+
+          $myBetting = $user->myBetting;
+
+          foreach ($list as $key => $value) {
+              if($myBetting->contains($value)){
+                $value->subscriber = true;
+              }
+          }
+
+       }
+
+       return $list;
     }
 
     public function create(array $data):Bool
@@ -32,6 +47,23 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
         }else{
           return false;
         }
+    }
+
+    public function BettingUser($id){
+
+      $user = Auth()->user();
+      $betting = Betting::find($id);
+      if($betting){
+        $rel = $user->myBetting()->toggle($betting->id);
+        /*toggle - se o usuario estiver relacionado com betting, ele remove a relação 
+         se não tiver relacionado, ele vai criar essa relação */
+         if(count($rel['attached'])){//se estiver relacionado
+           return true;
+         }
+      }
+
+      return false;
+      
     }
 
 
