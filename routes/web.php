@@ -45,6 +45,8 @@ Route::middleware('auth')->namespace('Site')->group(function () {
 
   Route::post('/sigh/{id}', 'MainController@sign')->name('sign');
   Route::get('/sigh/{id}', 'MainController@signNoLogin')->name('sign');
+  Route::get('/rounds/{id}', 'MainController@rounds')->name('rounds');
+  Route::get('/rounds/matches/{round_id}', 'MainController@matches')->name('rounds.matches');
   
 });
 

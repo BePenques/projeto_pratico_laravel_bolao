@@ -30,15 +30,15 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$value->title}}</div>
                         <div class="portfolio-caption-subheading text-muted">{{$value->user_name}}</div>
-                       <form method="post" action="{{route('sign', $value->id)}}">
-                        {{ csrf_field() }} <!-- token de segurança -->
-                            <a class="btn btn-info" href="">Ver rodadas</a>
+                        <form method="post" action="{{route('sign', $value->id)}}">
+                            {{ csrf_field() }} <!-- token de segurança -->
+                            <a class="btn btn-info" href="{{route('rounds', $value->id)}}">{{ __('bolao.check_rounds') }}</a>
                             @if($value->subscriber ?? false)
-                                <button class="btn btn-danger"> Deixar Bolão</button>
+                                <button class="btn btn-danger">{{ __('bolao.leave_betting') }}</button>
                             @else
-                                 <button class="btn btn-success"> Participar </button>
+                                <button class="btn btn-success">{{ __('bolao.participate') }}</button>
                             @endif
-                       </form>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -167,25 +167,21 @@
                                 <!-- Project Details Go Here-->
                                 <h2 class="text-uppercase">{{$value->title}}</h2>
                                 <p class="item-intro text-muted">{{$value->user_name}}</p>
-                                <p> Esse bolão tem as seguintes regras: </p>
+                                <p> {{__('bolao.rules')}} </p>
                                 <ul class="list-inline">
-                                    <li>Valor do Resultado: {{$value->score_points}}</li>
-                                    <li>Valor Extra: {{$value->extra_points}}</li>
-                                    <li>Taxa: {{$value->rate_points}}</li>
+                                    <li>{{__('bolao.score_points')}}: {{$value->score_points}}</li>
+                                    <li>{{ __('bolao.extra_points') }}: {{$value->extra_points}}</li>
+                                    <li>{{ __('bolao.rate_points') }}: {{$value->rate_points}}</li>
                                 </ul>
                                 <form method="post" action="{{route('sign', $value->id)}}">
                                     {{ csrf_field() }} <!-- token de segurança -->
-                                <a class="btn btn-info" href="">Ver rodadas</a>
-                                @if($value->subscriber ?? false)
-                                     <button class="btn btn-danger"> Deixar Bolão</button>
-                                @else
-                                    <button class="btn btn-success"> Participar </button>
-                                @endif
+                                    <a class="btn btn-info" href="{{route('rounds', $value->id)}}">{{ __('bolao.check_rounds') }}</a>
+                                    @if($value->subscriber ?? false)
+                                        <button class="btn btn-danger">{{ __('bolao.leave_betting') }}</button>
+                                    @else
+                                        <button class="btn btn-success">{{ __('bolao.participate') }}</button>
+                                    @endif
                                 </form>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times mr-1"></i>
-                                    Close Project
-                                </button>
                             </div>
                         </div>
                     </div>

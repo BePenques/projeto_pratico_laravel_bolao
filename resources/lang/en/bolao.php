@@ -81,7 +81,11 @@ return [
     'scoreboard_b'=>'Scoreboard team B',
     'date'=>'Date',
     'result'=>'Result',
-    'result_expli'=>' - A: team A winner | B: team B winner | E: game tied'
+    'result_expli'=>' - A: team A winner | B: team B winner | E: game tied',
+    'participate'=>'Participate',
+    'leave_betting'=>'Leave Betting',
+    'check_rounds'=>'Check Rounds',
+    'rules'=>'This bet has the following rules:'
 
     
 

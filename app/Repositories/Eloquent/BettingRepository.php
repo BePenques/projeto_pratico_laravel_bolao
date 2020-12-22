@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Repositories\Contracts\BettingRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use App\Betting;
+use App\Round;
 
 class BettingRepository extends AbstractRepository implements BettingRepositoryInterface
 {
@@ -60,6 +61,35 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
          if(count($rel['attached'])){//se estiver relacionado
            return true;
          }
+      }
+
+      return false;
+      
+    }
+
+    public function rounds($betting_id){
+
+      $user = Auth()->user();
+      $betting = $user->myBetting()->find($betting_id);
+      if($betting){//verifica se esse bolão pertence ao usuário logado
+        
+        return $betting->rounds()->orderBy('date_start','desc')->get();
+      }
+
+      return false;
+      
+    }
+
+    public function matches($round_id){
+
+      $user = Auth()->user();
+      $round = Round::find($round_id);
+      $betting_id = $round->Betting->id;
+
+      $betting = $user->myBetting()->find($betting_id);
+      if($betting){//verifica se esse bolão pertence ao usuário logado
+        
+        return $round->matches()->orderBy('date','desc')->get();
       }
 
       return false;

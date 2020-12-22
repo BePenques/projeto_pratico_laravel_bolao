@@ -84,6 +84,10 @@ return [
     'date'=>'Data',
     'result'=>'Resultado',
     'result_expli'=>' - A: time A ganhou | B: time B ganhou | E: empate',
+    'participate'=>'Participar',
+    'leave_betting'=>'Deixar Aposta',
+    'check_rounds'=>'Confira as Rodadas',
+    'rules'=>'Esse bolão tem as seguintes regras:'
     
     
 
