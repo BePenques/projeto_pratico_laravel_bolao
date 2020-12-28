@@ -24,6 +24,11 @@ class Match extends Model
         return $this->belongsTo('App\Round');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
     public function getRoundTitleAttribute()
     {
       return $this->round->title." - ".$this->round->betting_title;

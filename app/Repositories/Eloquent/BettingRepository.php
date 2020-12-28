@@ -80,10 +80,27 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
       
     }
 
+    public function findBetting($round_id){//procura o bolão a partir do round_id
+
+      $round = Round::find($round_id);
+      if($round){//verifica se esse bolão pertence ao usuário logado
+        
+        return $round->betting;
+      }
+
+      return false;
+      
+    }
+
     public function matches($round_id){
 
       $user = Auth()->user();
       $round = Round::find($round_id);
+
+      if(!$round){
+        return false;
+      }
+
       $betting_id = $round->Betting->id;
 
       $betting = $user->myBetting()->find($betting_id);

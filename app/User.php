@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Betting');
     }
 
+    public function matches()
+    {
+        return $this->belongsToMany('App\Match');
+    }
+
     public function getRoundsAttribute(){//pegar os rounds que pertencem ao bolão
 
         $bettings = $this->bettings;//lista de bolões desse usuário
