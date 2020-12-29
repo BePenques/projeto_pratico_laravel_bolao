@@ -61,5 +61,28 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
     
     }
 
+    public function match($match_id)
+    {
+
+      $user = auth()->user();
+
+      $match = $user->matches()->find($match_id);//verifica se o usuario logado já fez a aposta para essa partida
+
+      if($match){
+        return $match;
+      }
+
+      $match = Match::find($match_id);
+
+      //verificação de segurança, verificar se o apostador pertence ao bolão
+      $betting_id = $match->round->betting->id;
+      $betting = $user->myBetting()->find($betting_id);
+      if($betting){
+        return $match;
+      }
+
+      return false;
+    }
+
 
 }

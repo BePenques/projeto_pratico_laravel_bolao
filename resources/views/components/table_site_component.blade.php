@@ -15,7 +15,7 @@
               <th scope="row">@php echo $value->{$key2} @endphp</th>
             @elseif($key2 == 'acao')
               <td>    
-              <a href="{{route('match.result', $value->id)}}"><i class="material-icons" style="padding-right:10px; color:white;" alt="Detalhes" >pageview</i></a>
+              <a href="{{route($routeName, $value->id)}}"><i class="material-icons" style="padding-right:10px; color:white;" alt="Detalhes" >pageview</i></a>
              
               </td>
             @else

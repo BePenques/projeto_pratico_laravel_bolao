@@ -44,6 +44,8 @@ class MainController extends Controller
         return redirect(route('main').'#portfolio');
       }
 
+      $routeName = "rounds.matches";
+
       $betting = $bettingRepository->findById($betting_id);
 
       $page = trans('bolao.Round_list').' - '.$betting->title;
@@ -56,7 +58,7 @@ class MainController extends Controller
 
       $titleAdd = trans('bolao.addRound');
 
-        return view('site.rounds', compact('list','page','columnList', 'breadcrumb','titleAdd'));
+        return view('site.rounds', compact('list','page','columnList', 'breadcrumb','titleAdd','routeName'));
 
     }
 
@@ -78,7 +80,7 @@ class MainController extends Controller
 
       $page = trans('bolao.Match_list');
 
-      $routeName = "rounds.matches";
+      $routeName = "match.result";
 
       $betting = $bettingRepository->findBetting($round_id);
 
@@ -97,9 +99,11 @@ class MainController extends Controller
 
 
     public function result($match_id, MatchRepositoryInterface $matchRepository){  
+
+      $match = $matchRepository->match($match_id);
       
     //  return view('site.matches', compact('list','page','columnList', 'breadcrumb','routeName'));
 
-      dd('result');
+      dd($match);
     }
 }

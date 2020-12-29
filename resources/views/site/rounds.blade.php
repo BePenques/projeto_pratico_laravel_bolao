@@ -8,7 +8,7 @@
 
                   {{-- <x-search_component :titleAdd="$titleAdd" :search="$search"  :routeName="$routeName"/> --}}
 
-                  <x-table_site_component :columnList="$columnList" :list="$list" />
+                  <x-table_site_component :columnList="$columnList" :list="$list" :routeName="$routeName"/>
 
                   <x-paginate_component :search="$search"??'' :list="$list"/>
                   
