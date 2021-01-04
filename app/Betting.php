@@ -10,9 +10,9 @@ class Betting extends Model
         'user_id',//usuario_id
         'title',//titulo
         'current_round',//rodadaAtual
-        'score_points',//pontosResultado
-        'extra_points',//pontosExtras
-        'rate_points'//pontosTaxa
+        'score_points',//se o apostador acertou o time que ganhou, ou se acertou ser empate
+        'extra_points',//pontos extras se apostador acertar o placar
+        'rate_points'//taxa que aumenta  nos valores de cima a cada rodada 
     ];
 
     public function user()
@@ -36,7 +36,7 @@ class Betting extends Model
 
     public function Bettors()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('points');
     }
 }
 

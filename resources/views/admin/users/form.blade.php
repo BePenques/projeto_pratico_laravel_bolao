@@ -17,8 +17,8 @@
             </span>
         @enderror
     </div>
-
-
+</div>
+<div class="row">
     <div class="form-group col-6">
         <label for="password">{{ __('bolao.password') }}</label>
         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="">
@@ -32,8 +32,8 @@
         <label for="password">{{ __('bolao.confirmPassword') }}</label>
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="">
     </div>
-   
-      
+</div>
+<div class="row">    
     <div class="form-group col-6">
         <label for="roles">{{ __('bolao.select_roles') }}</label>    
         <select class="custom-select js-example-basic-multiple" multiple="multiple" name="roles[]" id="">
@@ -61,6 +61,8 @@
             @endforeach           
         </select>      
     </div>
-  
+</div>
+<div class="row">
+    <p><i>{{trans('bolao.obs2')}}</i></p>
 </div>
           

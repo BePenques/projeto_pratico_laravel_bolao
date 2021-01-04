@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function matches()
     {
-        return $this->belongsToMany('App\Match');
+        return $this->belongsToMany('App\Match')->withPivot('scoreboard_a','scoreboard_b','result');
     }
 
     public function getRoundsAttribute(){//pegar os rounds que pertencem ao bolão

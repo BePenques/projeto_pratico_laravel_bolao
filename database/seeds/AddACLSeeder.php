@@ -50,9 +50,14 @@ class AddACLSeeder extends Seeder
         ['description'=>'acesso a deletar usuário'    
         ]);
 
+        $acessoBetting = \App\Permission::firstOrCreate(['name'=>'manage-bets'],
+        ['description'=>'acesso a todos os bolões de todos os usuários'    
+        ]);
+
         $FullPermission = \App\Permission::firstOrCreate(['name'=>'acl-full-permission'],
         ['description'=>'acesso a todas as permissoes do sistema'    
         ]);
+   
 
         //relacionamewnto role com permissions
 

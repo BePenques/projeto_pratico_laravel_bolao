@@ -98,12 +98,80 @@ class MainController extends Controller
     }
 
 
-    public function result($match_id, MatchRepositoryInterface $matchRepository){  
+    public function result($match_id, MatchRepositoryInterface $matchRepository, BettingRepositoryInterface $bettingRepository){  
 
-      $match = $matchRepository->match($match_id);
+      $register = $matchRepository->match($match_id);
+
+      if(!$register){
+        return redirect()->route('main');
+      }
+
+      $routeName = "match.result";
+      $betting = $bettingRepository->findBetting($register->round->id);
+
+      $page = trans('bolao.bet');
+      $action = route($routeName.".update",$register->id);
       
-    //  return view('site.matches', compact('list','page','columnList', 'breadcrumb','routeName'));
 
-      dd($match);
+      $breadcrumb =    
+      [
+        (object)['url'=>route('main').'#portfolio', 'title'=>trans('bolao.betting_list')],
+        (object)['url'=>route('rounds', $betting->id), 'title'=>trans('bolao.Round_list').' - '.$betting->title],
+        (object)['url'=>route('rounds.matches', $register->round->id), 'title'=>trans('bolao.list',['page'=>trans('bolao.match')])],
+        (object)['url'=>'', 'title'=>trans('bolao.bet')]
+      ];
+
+      return view('site.betting', compact('register','page', 'breadcrumb','routeName','action'));
+
     }
+
+
+    public function update($match_id, Request $request, MatchRepositoryInterface $matchRepository){  
+
+      $data = $request->all();
+
+      if($match = $matchRepository->MatchUserSave($match_id,$data)){
+        session()->flash('msg',trans('bolao.record_successfully_updated'));
+        session()->flash('status','success');
+        return redirect()->route('rounds.matches',$match->round->id);
+
+      }else{
+
+        session()->flash('msg',trans('bolao.error_editing_record'));
+        session()->flash('status','error');
+        return redirect()->back();
+
+      }
+
+    }
+
+    public function classification($betting_id, BettingRepositoryInterface $bettingRepository)
+    {
+      $columnList = ['OrderAsc'=>'#',
+      'name'=>trans('bolao.name'), 
+      'pontos'=>trans('bolao.points')];
+
+      $betting = $bettingRepository->findById($betting_id);
+      $page = trans('bolao.classification');
+
+     $list = $bettingRepository->classification($betting_id);//retorna a lista ordenada com a classificação 
+      $routeName = "";
+
+      if(!$list){
+        return redirect(route('main').'#portfolio');
+      }
+
+      $breadcrumb =    
+      [
+        (object)['url'=>route('main').'#portfolio', 'title'=>trans('bolao.betting_list')],
+        (object)['url'=>'', 'title'=>trans('bolao.list',['page'=>$page])],
+     
+      ];
+
+      return view('site.rounds', compact('list','page', 'columnList','breadcrumb','routeName'));
+
+
+    }
+
+   
 }

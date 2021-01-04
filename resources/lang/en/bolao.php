@@ -37,6 +37,8 @@ return [
     'Match' => 'Match',
     'list' => ':page List',
     'create_crud' => 'Add :page',
+    'add' => 'Add',
+    'bet' => 'Bet',
     'edit_crud' => 'Edit :page',
     'details_crud' => ':page details',
     'home' => 'Home',
@@ -69,6 +71,7 @@ return [
     'score_points'=>'Score points',
     'extra_points'=>'Extra Points',
     'rate_points'=>'Rate Points',
+    'points'=>'Points',
     'user'=>'User',
     'betting_title'=>'Betting Title',
     'date_start'=>'Initial Date',
@@ -85,7 +88,12 @@ return [
     'participate'=>'Participate',
     'leave_betting'=>'Leave Betting',
     'check_rounds'=>'Check Rounds',
-    'rules'=>'This bet has the following rules:'
+    'rules'=>'This bet has the following rules:',
+    'classification'=>'Classification',
+    'obs'=>'When updating with the results, the calculation of points will occur and the match is considered finished',
+    'obs2'=>'Users with SuperAdmin role have full access to the system'
+    
+    
 
     
 

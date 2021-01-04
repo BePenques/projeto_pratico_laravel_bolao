@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Repositories\Eloquent;
-
 use App\Repositories\Contracts\BettingRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use App\Betting;
 use App\Round;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Gate;
 
 class BettingRepository extends AbstractRepository implements BettingRepositoryInterface
 {
@@ -31,6 +32,41 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
        return $list;
     }
 
+    public function paginate(int $paginate = 10, string $column = 'id', string $order = 'ASC'):LengthAwarePaginator
+    {
+      if(Gate::denies('manage-bets')){
+        return $this->model->where('user_id','=', auth()->user()->id)->orderBy($column, $order)->paginate($paginate);
+      }
+
+      return $this->model->orderBy($column, $order)->paginate($paginate);
+      
+    }
+
+
+    public function findWhereLike(array $columns, string $search, string $column = 'id', string $order = 'ASC'):Collection
+    {
+
+      $query = $this->model;
+
+      if(Gate::denies('manage-bets')){      
+        foreach ($columns as $key => $value) {
+
+          $query = $query->orWhere($value,'like','%'.$search.'%');
+
+        }
+        return $query->where('user_id','=', auth()->user()->id)->orderBy($column, $order)->get();
+      }
+
+      foreach ($columns as $key => $value) {
+
+        $query = $query->orWhere($value,'like','%'.$search.'%');
+
+      }
+
+      return $query->orderBy($column, $order)->get();
+
+    }
+
     public function create(array $data):Bool
     {
         $user = Auth()->user();
@@ -40,14 +76,16 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
 
     public function update(array $data, int $id):Bool
     {
-        $register = $this->findById($id);
-        if($register){
-          $user = Auth()->user();
-          $data['user_id'] = $user->id;
-          return (bool) $register->update($data);
-        }else{
-          return false;
-        }
+      if(Gate::denies('manage-bets')){   
+          $register = $this->findById($id);
+          if($register){
+            $user = Auth()->user();
+            $data['user_id'] = $user->id;
+            return (bool) $register->update($data);
+          }else{
+            return false;
+          }
+      }
     }
 
     public function BettingUser($id){
@@ -111,6 +149,14 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
 
       return false;
       
+    }
+
+    public function classification($betting_id){
+
+      $betting = Betting::find($betting_id);
+      $bettors = $betting->bettors()->orderBy('pivot_points','DESC')->get();
+      return $bettors;
+
     }
 
 

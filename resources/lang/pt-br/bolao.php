@@ -21,6 +21,7 @@ return [
     'addPermission' => 'Adicionar Permissão',
     'addBetting' => 'Adicionar Bolão',
     'addMatch' => 'Adicionar Partida',
+    'add' => 'Adicionar',
     'clean' => 'Limpar',
     'search' => 'Buscar',
     'user_list' => 'Usuários',
@@ -28,6 +29,7 @@ return [
     'betting_list' => 'Bolões',
     'Round_list' => 'Rodadas',
     'Match_list' => 'Partidas',
+    'bet' => 'Aposta',
     'Role_list' => 'Funções',
     'user' => 'Usuário',
     'permission' => 'Permissão',
@@ -71,6 +73,7 @@ return [
     'score_points'=>'Resultado dos pontos',
     'extra_points'=>'Pontos Extras',
     'rate_points'=>'Taxa de pontos',
+    'points'=>'Pontuação',
     'user'=>'Usuário',
     'betting_title'=>'Nome Bolão',
     'date_start'=>'Data Inicial',
@@ -87,7 +90,10 @@ return [
     'participate'=>'Participar',
     'leave_betting'=>'Deixar Aposta',
     'check_rounds'=>'Confira as Rodadas',
-    'rules'=>'Esse bolão tem as seguintes regras:'
+    'rules'=>'Esse bolão tem as seguintes regras:',
+    'classification'=>'Classificação',
+    'obs'=>'Ao atualizar os dados com os resultados ocorerrá o calculo dos pontos e a partida é dada como finalizada',
+    'obs2'=>'*Usuários com a função SuperAdmin tem total acesso ao sistema'
     
     
 

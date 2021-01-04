@@ -33,6 +33,7 @@
                         <form method="post" action="{{route('sign', $value->id)}}">
                             {{ csrf_field() }} <!-- token de segurança -->
                             <a class="btn btn-info" href="{{route('rounds', $value->id)}}">{{ __('bolao.check_rounds') }}</a>
+                            <a class="btn btn-warning" href="{{route('classification',$value->id)}}">@lang('bolao.classification')</a>
                             @if($value->subscriber ?? false)
                                 <button class="btn btn-danger">{{ __('bolao.leave_betting') }}</button>
                             @else

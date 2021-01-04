@@ -26,7 +26,18 @@ class Match extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('scoreboard_a','scoreboard_b','result');
+    }
+
+    public function getScoreboardABettingAttribute()
+    {
+        $user = auth()->user();
+        return $this->users()->find($user->id)->pivot->scoreboard_a ?? null;//pivot pega a ligação(MatchUser)
+    }
+    public function getScoreboardBBettingAttribute()
+    {
+        $user = auth()->user();
+        return $this->users()->find($user->id)->pivot->scoreboard_b ?? null;//pivot pega a ligação(MatchUser)
     }
 
     public function getRoundTitleAttribute()

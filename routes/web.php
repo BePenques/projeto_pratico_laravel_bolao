@@ -48,6 +48,8 @@ Route::middleware('auth')->namespace('Site')->group(function () {
   Route::get('/rounds/{id}', 'MainController@rounds')->name('rounds');
   Route::get('/rounds/matches/{round_id}', 'MainController@matches')->name('rounds.matches');
   Route::get('/rounds/matches/result/{match_id}', 'MainController@result')->name('match.result');
+  Route::put('/rounds/matches/result/{match_id}', 'MainController@update')->name('match.result.update');
+  Route::get('/classification/{betting_id}', 'MainController@classification')->name('classification');
   
 });
 
