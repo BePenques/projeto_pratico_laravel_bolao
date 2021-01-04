@@ -32,38 +32,30 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
 
     public function findWhereLike(array $columns, string $search, string $column = 'id', string $order = 'ASC'):Collection
     {
+        $query = $this->model;
 
-      $user = auth()->user();
-
-      $query = $this->model;
-
-        if(Gate::denies('manage-bets')){
+        if (Gate::denies('manage-bets')) {
+            $user = auth()->user();
             $list = [];
-            foreach ($user->bettings as $key => $betting) {
-              foreach ($betting->rounds as $key => $round) {
-                $list = $round->matches()->value('id');
-              }
-            }  
-
+            foreach ($user->bettings as $betting){
+                foreach ($betting->rounds as $round) {
+                    $list[] = $round->matches()->value('id');
+                }
+            }
             foreach ($columns as $key => $value) {
-
-              $query = $query->orWhere($value,'like','%'.$search.'%');
-
+                $query = $query->orWhere($value,'like','%'.$search.'%');
             }
 
-              return $query->whereIn('round_id',$list)->orderBy($column, $order)->get();
-          }
+            return $query->whereIn('round_id', $list)->orderBy($column,$order)->get();
         }
 
-      foreach ($columns as $key => $value) {
+        foreach ($columns as $key => $value) {
+            $query = $query->orWhere($value,'like','%'.$search.'%');
+        }
 
-        $query = $query->orWhere($value,'like','%'.$search.'%');
-
-      }
-
-      return $query->orderBy($column, $order)->get();
-
+        return $query->orderBy($column,$order)->get();
     }
+  
 
     public function create(array $data):Bool
     {
