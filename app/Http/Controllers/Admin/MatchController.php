@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\MatchRepositoryInterface;
+use App\Round;
 use Validator;
 
 
@@ -12,7 +13,7 @@ use Validator;
 class MatchController extends Controller
 {
     private $route = 'matches';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['title','stadium','team_a','team_b'];//list of columns from 'findWhereLike'
     private $model;
     private $titleAdd;
@@ -219,17 +220,31 @@ class MatchController extends Controller
 
         $routeName = $this->route;
 
-
-        if($this->model->update($data,$id)){
-
-            return $this->sessionMsg(trans('bolao.record_successfully_updated'),'success', $routeName.".index");
+        // $round_id = $data['round_id'];
+        // $round = Round::find($round_id);
 
 
-        }else{
+        // if($round->date_end < now()){
 
-            return $this->sessionMsg(trans('bolao.error_editing_record'),'error','back');
+          if($this->model->update($data,$id)){
 
-        }
+              return $this->sessionMsg(trans('bolao.record_successfully_updated'),'success', $routeName.".index");
+
+
+          }else{
+
+              session()->flash('msg',trans('bolao.error_editing_record'));
+              session()->flash('status','error');
+              return redirect()->back();
+
+          }
+        // }else{
+
+        //   session()->flash('msg',trans('bolao.round_that_match_already_ended!'));
+        //   session()->flash('status','error');
+        //   return redirect()->route($routeName.".index");
+
+        // }
     }
 
         /**

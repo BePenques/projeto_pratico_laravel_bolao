@@ -12,7 +12,7 @@ use Validator;
 class BettingController extends Controller
 {
     private $route = 'bettings';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['title'];//list of columns from 'findWhereLike'
     private $model;
     private $titleAdd;

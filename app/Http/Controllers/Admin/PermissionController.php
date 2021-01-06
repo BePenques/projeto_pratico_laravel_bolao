@@ -12,7 +12,7 @@ use Validator;
 class PermissionController extends Controller
 {
     private $route = 'permissions';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['name','description'];//list of columns from 'findWhereLike'
     private $model;
     private $titleAdd;

@@ -48,6 +48,7 @@ return [
     'record_successfully_added' => 'Record successfully added!',
     'record_successfully_updated' => 'Record updated successfully!',
     'error_editing_record' => 'Error editing record.',
+    'period' => 'Bets are not allowed outside the round period!',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'action' => 'Action',
@@ -90,7 +91,7 @@ return [
     'check_rounds'=>'Check Rounds',
     'rules'=>'This bet has the following rules:',
     'classification'=>'Classification',
-    'obs'=>'When updating with the results, the calculation of points will occur and the match is considered finished',
+    'obs'=>'When updating the score of the match, (after the end date of the round) the calculation of bettors points will occur',
     'obs2'=>'Users with SuperAdmin role have full access to the system'
     
     

@@ -12,7 +12,7 @@ use Validator;
 class RoundController extends Controller
 {
     private $route = 'rounds';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['title'];//list of columns from 'findWhereLike'
     private $model;
     private $titleAdd;

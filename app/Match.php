@@ -40,6 +40,18 @@ class Match extends Model
         return $this->users()->find($user->id)->pivot->scoreboard_b ?? null;//pivot pega a ligação(MatchUser)
     }
 
+    public function getBettingAttribute()
+    {
+        $user = auth()->user();
+        $teamA = $this->users()->find($user->id)->pivot->scoreboard_a ?? null;
+        $teamB = $this->users()->find($user->id)->pivot->scoreboard_b ?? null;
+        if ($teamA && $teamB) {
+            return "$teamA x $teamB";
+        }
+
+        return '';
+    }
+
     public function getRoundTitleAttribute()
     {
       return $this->round->title." - ".$this->round->betting_title;

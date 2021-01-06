@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Gate;
 class UserController extends Controller
 {
     private $route = 'users';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['name','email'];//list of columns from 'findWhereLike'
     private $model;
     private $modelRole;

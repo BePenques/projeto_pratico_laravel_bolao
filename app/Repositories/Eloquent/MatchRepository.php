@@ -4,9 +4,11 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\MatchRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Gate;
 use App\Match;
 use App\MatchUser;
+use App\Round;
 
 class MatchRepository extends AbstractRepository implements MatchRepositoryInterface
 {
@@ -91,10 +93,10 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
           $listRel = $user->rounds;
           $round_id = $data['round_id'];
           $exist = false;
-      
+         
           foreach ($listRel as $key => $value) {/*verifica se o registro pertence a determinado usuário*/
-            if($round_id == $value->id){
-                  $exist = true;
+            if($round_id == $value->id){          
+                $exist = true;        
             }
           }
       
@@ -110,8 +112,8 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
         }
       }
 
-      $register = $this->find($id);
       if($register){
+          $this->calculatePoints($register);
           return (bool) $register->update($data);
       }else{
         return false;
@@ -125,32 +127,38 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
       $betting = $match->round->betting;
       $bettors = $betting->bettors;//pega todos os apostadores
       $now = now();//data de agora
+      $count = 0;
 
-      foreach ($bettors as $key => $user) {//laço de repetição dos apostadores
+      foreach ($bettors as $user) {
         $taxa = 0;
         $pontos = 0;
         $roundTitle = '';
-        foreach ($betting->rounds as $key => $roundValue) {//laço de repetição das rodadas
-          if( $roundValue->date_end < $now){//se a rodada esta finalizada
-            $roundTitle = $roundValue->title;
-            foreach ($roundValue->matches as $key => $matchValue) {//laço de repetição das partidas
-              if($user->matches->contains($matchValue)){//verifica se o usuário fez uma aposta
-                $bet = $user->matches()->find($matchValue->id);//pega o registro da aposta
-                $pontos+= ($bet->result === $bet->pivot->result ? ($betting->score_points + $taxa) : 0);
-                $pontos+= ($bet->scoreboard_a === $bet->pivot->scoreboard_a && $bet->scoreboard_b === $bet->pivot->scoreboard_b ? ($betting->extra_points + $taxa) : 0);
-              }
+        foreach ($betting->rounds as $key => $roundValue) {
+            if ($roundValue->date_end < $now ) {
+                // $roundTitle = $roundValue->title;
+                $count++;
+                foreach ($roundValue->matches as $matchValue) {
+                    if ($user->matches->contains($matchValue)) {
+                        $bet = $user->matches()->find($matchValue->id);
+                        $pontos += ($bet->result === $bet->pivot->result) ? $betting->score_points + $taxa : 0;
+                        $pontos += ($bet->scoreboard_a === $bet->pivot->scoreboard_a &&
+                            $bet->scoreboard_b === $bet->pivot->scoreboard_b) ? $betting->extra_points + $taxa : 0;
+                    }
+                }
             }
-          }
-          $taxa += $betting->rate_points;
+
+            $taxa += $betting->rate_points;
         }
 
-        $betting->current_round = $roundTitle;
+        $betting->current_round =  $count;
         $betting->save();
 
+       //dd($pontos);
         $user->myBetting()->updateExistingPivot(
-          $betting, [
-              'points'=>$pontos
-          ]
+            $betting,
+            [
+                'points' => $pontos
+            ]
         );
       }
 

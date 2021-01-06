@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\RoundRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Gate;
 use App\Round;
 
@@ -97,7 +98,7 @@ class RoundRepository extends AbstractRepository implements RoundRepositoryInter
         }
       }
 
-      $register = $this->find($id);
+      $register = $this->findById($id);
       if($register){
           return (bool) $register->update($data);
       }else{

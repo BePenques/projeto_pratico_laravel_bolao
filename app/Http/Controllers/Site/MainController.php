@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\BettingRepositoryInterface;
 use App\Repositories\Contracts\MatchRepositoryInterface;
+use App\Round;
+use App\Match;
 
 class MainController extends Controller
 {
@@ -75,7 +77,8 @@ class MainController extends Controller
       'title'=>trans('bolao.title'), 
       'round_title'=>trans('bolao.Round'), 
       'stadium'=>trans('bolao.stadium'), 
-      'date_site'=>trans('bolao.date'),   
+      'date_site'=>trans('bolao.date'),
+      'betting'=>trans('bolao.bet'),  
       'acao'=>trans('bolao.action')];
 
       $page = trans('bolao.Match_list');
@@ -129,18 +132,27 @@ class MainController extends Controller
     public function update($match_id, Request $request, MatchRepositoryInterface $matchRepository){  
 
       $data = $request->all();
+      
+      $match = Match::find($match_id);
+      $round = $match->round;
 
-      if($match = $matchRepository->MatchUserSave($match_id,$data)){
-        session()->flash('msg',trans('bolao.record_successfully_updated'));
-        session()->flash('status','success');
-        return redirect()->route('rounds.matches',$match->round->id);
+      if($round->date_start < now() && $round->date_end > now()){
+        if($match = $matchRepository->MatchUserSave($match_id,$data)){
+          session()->flash('msg',trans('bolao.record_successfully_updated'));
+          session()->flash('status','success');
+          return redirect()->route('rounds.matches',$match->round->id);
 
+        }else{
+
+          session()->flash('msg',trans('bolao.error_editing_record'));
+          session()->flash('status','error');
+          return redirect()->back();
+
+        }
       }else{
-
-        session()->flash('msg',trans('bolao.error_editing_record'));
+        session()->flash('msg',trans('bolao.period'));
         session()->flash('status','error');
-        return redirect()->back();
-
+        return redirect()->route('rounds.matches', $round->id);
       }
 
     }
@@ -149,7 +161,7 @@ class MainController extends Controller
     {
       $columnList = ['OrderAsc'=>'#',
       'name'=>trans('bolao.name'), 
-      'pontos'=>trans('bolao.points')];
+      'pivot_points'=>trans('bolao.points')];
 
       $betting = $bettingRepository->findById($betting_id);
       $page = trans('bolao.classification');

@@ -47,8 +47,9 @@ return [
     'confirm' => 'O campo senha de confirmação não confere.',
     'record_successfully_added' => 'Registro adicionado com sucesso!',
     'record_successfully_updated' => 'Registro atualizado com sucesso!',
-    'error_adding_record' => 'Erro ao adicionar regitro.',
-    'error_editing_record' => 'Erro ao atualizar o regitro.',
+    'error_adding_record' => 'Erro ao adicionar registro.',
+    'error_editing_record' => 'Erro ao atualizar o registro.',
+    'period' => 'Apostas não são permitidas fora do periodo da rodada!',
     'edit' => 'Editar',
     'delete' => 'Excluir',
     'action' => 'Ação',
@@ -92,7 +93,7 @@ return [
     'check_rounds'=>'Confira as Rodadas',
     'rules'=>'Esse bolão tem as seguintes regras:',
     'classification'=>'Classificação',
-    'obs'=>'Ao atualizar os dados com os resultados ocorerrá o calculo dos pontos e a partida é dada como finalizada',
+    'obs'=>'Ao atualizar o placar da partida,( após a data final da rodada) ocorerrá o calculo de pontos dos apostadores',
     'obs2'=>'*Usuários com a função SuperAdmin tem total acesso ao sistema'
     
     

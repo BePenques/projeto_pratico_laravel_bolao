@@ -13,7 +13,7 @@ use Validator;
 class RoleController extends Controller
 {
     private $route = 'roles';
-    private $paginate = 1;
+    private $paginate = 5;
     private $search = ['name','description'];//list of columns from 'findWhereLike'
     private $model;
     private $modelPermission;
