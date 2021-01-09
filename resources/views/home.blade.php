@@ -16,7 +16,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                    <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                    <img class="img-fluid" src="{{asset('assets/img/portfolio/user.png')}}" alt="" />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">@lang('bolao.list',['page'=>__('bolao.user_list')])</div>
@@ -31,7 +31,7 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                <img class="img-fluid" src="{{asset('assets/img/portfolio/placar.jpg')}}" alt="" />
                 </a>
                 <div class="portfolio-caption">
                     <div class="portfolio-caption-heading">@lang('bolao.betting_list')</div>
@@ -45,7 +45,7 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                <img class="img-fluid" src="{{asset('assets/img/portfolio/placar.jpg')}}" alt="" />
                 </a>
                 <div class="portfolio-caption">
                     <div class="portfolio-caption-heading">@lang('bolao.Round_list')</div>
@@ -59,7 +59,7 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                <img class="img-fluid" src="{{asset('assets/img/portfolio/01-thumbnail.jpg')}}" alt="" />
+                <img class="img-fluid" src="{{asset('assets/img/portfolio/placar.jpg')}}" alt="" />
                 </a>
                 <div class="portfolio-caption">
                     <div class="portfolio-caption-heading">@lang('bolao.Match_list')</div>
@@ -74,7 +74,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                        <img class="img-fluid" src="assets/img/portfolio/conf2.png" alt="" />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">@lang('bolao.list',['page'=>__('bolao.Role_list')])</div>
@@ -88,7 +88,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                        <img class="img-fluid" src="assets/img/portfolio/conf2.png" alt="" />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">@lang('bolao.list',['page'=>__('bolao.permission_list')])</div>

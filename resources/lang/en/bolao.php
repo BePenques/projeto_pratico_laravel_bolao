@@ -92,7 +92,9 @@ return [
     'rules'=>'This bet has the following rules:',
     'classification'=>'Classification',
     'obs'=>'When updating the score of the match, (after the end date of the round) the calculation of bettors points will occur',
-    'obs2'=>'Users with SuperAdmin role have full access to the system'
+    'obs2'=>'Users with SuperAdmin role have full access to the system',
+    'obs3'=>'*You can change your bet as many times as you like before the closing date: ',
+    'Apostar'=>'Create Bet'
     
     
 

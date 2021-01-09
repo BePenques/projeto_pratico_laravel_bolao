@@ -3,7 +3,7 @@
 @section('content')
 
       <x-page_component col=12 :breadcrumb="$breadcrumb" :page="__('bolao.edit_crud',['page'=>$page_create])" >
-
+        
         <x-alert :msg="session('msg'??'')" :status="session('status'??'')" />  
 
         <x-form_component :action="$action" method="PUT">

@@ -94,7 +94,9 @@ return [
     'rules'=>'Esse bolão tem as seguintes regras:',
     'classification'=>'Classificação',
     'obs'=>'Ao atualizar o placar da partida,( após a data final da rodada) ocorerrá o calculo de pontos dos apostadores',
-    'obs2'=>'*Usuários com a função SuperAdmin tem total acesso ao sistema'
+    'obs2'=>'*Usuários com a função SuperAdmin tem total acesso ao sistema',
+    'obs3'=>'*Você pode alterar sua aposta quantas vezes quiser antes da data de encerramento: ',
+    'Apostar'=>'Apostar'
     
     
 

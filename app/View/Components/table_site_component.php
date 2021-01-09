@@ -10,12 +10,14 @@ class table_site_component extends Component
     public $list = [];
     public $columnList = [];
     public $routeName;
+    public $tipo;
 
-    public function __construct($list = [],$columnList = [], $routeName)
+    public function __construct($list = [],$columnList = [], $routeName, $tipo)
     {
       $this->list = $list;
       $this->columnList = $columnList;
       $this->routeName = $routeName;
+      $this->tipo = $tipo;
     }
 
     /**

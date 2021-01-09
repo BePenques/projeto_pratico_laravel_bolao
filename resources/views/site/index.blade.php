@@ -25,17 +25,17 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/placar.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$value->title}}</div>
                         <div class="portfolio-caption-subheading text-muted">{{$value->user_name}}</div>
                         <form method="post" action="{{route('sign', $value->id)}}">
                             {{ csrf_field() }} <!-- token de segurança -->
-                            <a class="btn btn-info" href="{{route('rounds', $value->id)}}">{{ __('bolao.check_rounds') }}</a>
-                            <a class="btn btn-warning" href="{{route('classification',$value->id)}}">@lang('bolao.classification')</a>
                             @if($value->subscriber ?? false)
                                 <button class="btn btn-danger">{{ __('bolao.leave_betting') }}</button>
+                                <a class="btn btn-info" href="{{route('rounds', $value->id)}}">{{ __('bolao.check_rounds') }}</a>
+                                <a class="btn btn-warning" href="{{route('classification',$value->id)}}">@lang('bolao.classification')</a>
                             @else
                                 <button class="btn btn-success">{{ __('bolao.participate') }}</button>
                             @endif

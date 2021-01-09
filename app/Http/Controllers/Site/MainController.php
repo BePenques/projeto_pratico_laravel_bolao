@@ -81,6 +81,7 @@ class MainController extends Controller
       'betting'=>trans('bolao.bet'),  
       'acao'=>trans('bolao.action')];
 
+      $tipo = 'aposta';
       $page = trans('bolao.Match_list');
 
       $routeName = "match.result";
@@ -94,7 +95,7 @@ class MainController extends Controller
         (object)['url'=>'', 'title'=>trans('bolao.list',['page'=>$page])]
       ];
       
-      return view('site.matches', compact('list','page','columnList', 'breadcrumb','routeName'));
+      return view('site.matches', compact('list','page','columnList', 'breadcrumb','routeName','tipo'));
 
      // dd($list->toArray());
 
@@ -114,17 +115,20 @@ class MainController extends Controller
 
       $page = trans('bolao.bet');
       $action = route($routeName.".update",$register->id);
+
+      $match = Match::find($match_id);
+      $date_end = $match->round->date_end;
       
 
       $breadcrumb =    
       [
         (object)['url'=>route('main').'#portfolio', 'title'=>trans('bolao.betting_list')],
         (object)['url'=>route('rounds', $betting->id), 'title'=>trans('bolao.Round_list').' - '.$betting->title],
-        (object)['url'=>route('rounds.matches', $register->round->id), 'title'=>trans('bolao.list',['page'=>trans('bolao.match')])],
+        (object)['url'=>route('rounds.matches', $register->round->id), 'title'=>trans('bolao.list',['page'=>trans('bolao.Match_list')])],
         (object)['url'=>'', 'title'=>trans('bolao.bet')]
       ];
 
-      return view('site.betting', compact('register','page', 'breadcrumb','routeName','action'));
+      return view('site.betting', compact('register','page', 'breadcrumb','routeName','action','date_end'));
 
     }
 

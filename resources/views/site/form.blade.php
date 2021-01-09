@@ -17,4 +17,5 @@
             </span>
         @enderror
     </div>
+    <p><i>{{__('bolao.obs3') }} {{$date_end}}</i></p>
 </div>
