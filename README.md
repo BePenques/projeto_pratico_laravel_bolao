@@ -64,6 +64,7 @@ Na pasta do projeto, execute o seguinte comando **php artisan db:seed** (para ge
 > SuperAdmin login: superadmin@mail.com | senha: admin123 <br>
 > Gerente    login: gerente@mail.com | senha: gerente123
 
+Dentro do projeto, na pasta 'prototipo': arquivo de protótipo + diagrama entidade relacionamento(DER)
 ## Notas
 
-*Projeto(em desenvolvimento) para fins de estudo e utilização do framework PHP Laravel, em Aplicações Web.*
+*Projeto(concluído) para fins de estudo e utilização do framework PHP Laravel, em Aplicações Web.*
